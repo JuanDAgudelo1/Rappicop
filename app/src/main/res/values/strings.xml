@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">RappiCop</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="rappicop_app">RappiCop App</string>
+    <string name="explora_tu_comida">Explora tu comida</string>
+    <string name="iniciar_sesion">Iniciar sesion</string>
+    <string name="rappicop">RappiCop</string>
+    <string name="registro">Registro</string>
+    <string name="nombre_completo">Nombre Completo</string>
+    <string name="correo_electronico">Correo electronico</string>
+    <string name="contrasena">Contraseña</string>
+    <string name="iniciar_sesi_n">Iniciar sesión</string>
+    <string name="comida_diaria">Comida Diaria</string>
+    <string name="favorito">favorito</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tu_carrito">Tu Carrito</string>
+    <string name="pepitoperez_upc_edu_co">pepitoperez@upc.edu.co</string>
+    <string name="pepito_perez">Pepito Perez</string>
+    <string name="_10_00_23_00">10:00 - 23:00</string>
+    <string name="nombre_del_producto">Nombre del producto</string>
+    <string name="_5_0">5.0</string>
+</resources>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.proyecto.rappicop.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_comida_diaria"
+        android:name="com.proyecto.rappicop.ui.gallery.ComidaDiariaFragment"
+        android:label="@string/comida_diaria"
+        tools:layout="@layout/comida_diaria_fragment" />
+
+    <fragment
+        android:id="@+id/nav_favorito"
+        android:name="com.proyecto.rappicop.ui.slideshow.FavoritoFragment"
+        android:label="@string/favorito"
+        tools:layout="@layout/fragment_favorito" />
+    <fragment
+        android:id="@+id/nav_tu_carrito"
+        android:name="com.proyecto.rappicop.ui.TuCarritoFragment"
+        android:label="@string/tu_carrito"
+        tools:layout="@layout/fragment_tu_carrito" />
+</navigation>
