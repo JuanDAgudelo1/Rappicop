@@ -26,7 +26,7 @@ public class Bienvenido extends AppCompatActivity {
     }
 
     public void iniciar_sesion(View view) {
-        startActivity(new Intent(Bienvenido.this,Registro.class));
+        startActivity(new Intent(Bienvenido.this,Login.class));
 
     }
 }

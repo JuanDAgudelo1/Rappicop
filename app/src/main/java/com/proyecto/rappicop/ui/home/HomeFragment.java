@@ -18,7 +18,6 @@ import com.proyecto.rappicop.modelos.HomeHoriModelo;
 import com.proyecto.rappicop.modelos.HomeVertiModelo;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class HomeFragment extends Fragment implements UpdateVertical {
 

@@ -13,13 +13,13 @@
 
     <fragment
         android:id="@+id/nav_comida_diaria"
-        android:name="com.proyecto.rappicop.ui.gallery.ComidaDiariaFragment"
+        android:name="com.proyecto.rappicop.ui.comidadiaria.ComidaDiariaFragment"
         android:label="@string/comida_diaria"
         tools:layout="@layout/comida_diaria_fragment" />
 
     <fragment
         android:id="@+id/nav_favorito"
-        android:name="com.proyecto.rappicop.ui.slideshow.FavoritoFragment"
+        android:name="com.proyecto.rappicop.ui.favorito.FavoritoFragment"
         android:label="@string/favorito"
         tools:layout="@layout/fragment_favorito" />
     <fragment

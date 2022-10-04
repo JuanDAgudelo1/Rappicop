@@ -1,4 +1,4 @@
-package com.proyecto.rappicop.ui.gallery;
+package com.proyecto.rappicop.ui.favorito;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,17 +10,16 @@ import androidx.fragment.app.Fragment;
 
 import com.proyecto.rappicop.R;
 
-
-public class ComidaDiariaFragment extends Fragment {
+public class FavoritoFragment extends Fragment {
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-
-        View root = inflater.inflate(R.layout.comida_diaria_fragment,container, false);
+        View root = inflater.inflate(R.layout.fragment_favorito,container, false);
 
         return root;
     }
+
 
 }
