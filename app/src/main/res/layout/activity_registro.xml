@@ -101,6 +101,7 @@
         app:layout_constraintTop_toBottomOf="@+id/correo"
         app:layout_goneMarginTop="30dp" />
 
+
     <EditText
         android:id="@+id/contraseña"
         android:layout_width="300dp"
@@ -109,6 +110,7 @@
         android:drawableLeft="@drawable/ic_baseline_vpn_key_24"
         android:drawablePadding="13dp"
         android:hint="Contraseña"
+        android:inputType="textPassword"
         android:textColor="@color/white"
         android:layout_marginTop="10dp"
         android:textColorHint="@color/white"
@@ -118,6 +120,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/usuario"
         app:layout_goneMarginTop="30dp" />
+
 
     <EditText
         android:id="@+id/conficontraseña"
@@ -129,6 +132,7 @@
         android:hint="Confirmar Contraseña"
         android:textColor="@color/white"
         android:layout_marginTop="10dp"
+        android:inputType="textPassword"
         android:textColorHint="@color/white"
         android:textSize="19sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -136,6 +140,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/contraseña"
         app:layout_goneMarginTop="30dp" />
+
+
 
     <RadioGroup
         android:id="@+id/genders"

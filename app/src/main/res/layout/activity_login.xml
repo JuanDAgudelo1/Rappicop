@@ -75,6 +75,7 @@
         android:drawablePadding="13dp"
         android:hint="Contraseña"
         android:textColor="@color/white"
+        android:inputType="textPassword"
         android:layout_marginTop="10dp"
         android:textColorHint="@color/white"
         android:textSize="19sp"
