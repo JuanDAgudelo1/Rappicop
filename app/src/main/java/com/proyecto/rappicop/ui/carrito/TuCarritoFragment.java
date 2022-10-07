@@ -1,4 +1,4 @@
-package com.proyecto.rappicop.ui;
+package com.proyecto.rappicop.ui.carrito;
 
 import android.os.Bundle;
 

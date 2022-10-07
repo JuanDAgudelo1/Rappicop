@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:fontFamily="@font/amarante"
-            android:text="Semana de delicias \nRecetas para la cena"
+            android:text="Semana de delicias \nRecetas para la casa"
             android:textColor="@color/white"
             android:textSize="25dp"
             android:textStyle="bold"
@@ -38,17 +38,7 @@
             app:layout_constraintTop_toTopOf="@id/imageView7"
             app:layout_constraintVertical_bias="0.7" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:padding="8dp"
-            android:text="@string/ver_mas"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="@id/imageView7"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_margin="8dp"/>
+
 
         <TextView
             android:layout_margin="10dp"
