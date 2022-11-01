@@ -31,4 +31,15 @@
     <string name="_5_0">5.0</string>
     <string name="tu_comida_favorita_esta_aqui">¡Tu comida favorita esta aqui!</string>
     <string name="ver_mas">Ver más</string>
+    <string name="comprar">Comprar</string>
+    <string name="mi_carrito">Mi Carrito</string>
+    <string name="vendedor">Vendedor</string>
+    <string-array name="categoria">
+
+        <item>Comida rapida</item>
+        <item>Ensalada</item>
+        <item>Bebida</item>
+        <item>Postres</item>
+
+    </string-array>
 </resources>

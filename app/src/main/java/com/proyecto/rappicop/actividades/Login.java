@@ -24,7 +24,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        DatabaseHelper conexion = new DatabaseHelper(this,"bd_usuarios", null,1);
+        DatabaseHelper rapidb = new DatabaseHelper(Login.this);
 
         campoUsuarioLogin = (EditText) findViewById(R.id.editText2);
         campoContrasenaLogin = (EditText) findViewById(R.id.textview3);
@@ -57,9 +57,9 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
     public void login(EditText contrasena){
 
 
-        DatabaseHelper conexion = new DatabaseHelper(this,"bd_usuarios", null,5);
+        DatabaseHelper rapidb = new DatabaseHelper(Login.this);
 
-        SQLiteDatabase db = conexion.getReadableDatabase();
+        SQLiteDatabase db = rapidb.getReadableDatabase();
 
         String[] parametros = {campoUsuarioLogin.getText().toString()};
 
@@ -84,9 +84,9 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
     public void viewAll(){
 
 
-        DatabaseHelper conexion = new DatabaseHelper(this,"bd_usuarios", null,1);
+        DatabaseHelper rapidb = new DatabaseHelper(Login.this);
 
-        SQLiteDatabase db = conexion.getReadableDatabase();
+        SQLiteDatabase db = rapidb.getReadableDatabase();
 
         String[] campos = {Utilidades.CAMPO_NOMBRECOMPLETO,Utilidades.CAMPO_CORREO,Utilidades.CAMPO_USUARIOREGISTRADO, Utilidades.CAMPO_CONTRASENA, Utilidades.CAMPO_CONFIRMARCONTRASENA};
 
