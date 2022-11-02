@@ -12,13 +12,12 @@ import com.proyecto.rappicop.R;
 public class TuCarritoFragment extends Fragment {
 
     public TuCarritoFragment() {
-
     }
 
     @Override
-    public View onCreateView (LayoutInflater inflater, ViewGroup container,
-                              Bundle savedInstanceState){
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
 
-        return inflater.inflate(R.layout.fragment_tu_carrito, container,false);
+        return inflater.inflate(R.layout.fragment_tu_carrito, container, false);
     }
 }

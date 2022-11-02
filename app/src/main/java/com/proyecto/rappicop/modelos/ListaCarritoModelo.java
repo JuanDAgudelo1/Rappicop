@@ -12,7 +12,7 @@ public class ListaCarritoModelo {
     public String consumidor;
     public String vendedor;
 
-    public ListaCarritoModelo(Bitmap img, String nproducto, String precio, String descripcion, String cantidad,String consumidor, String vendedor) {
+    public ListaCarritoModelo(Bitmap img, String nproducto, String precio, String descripcion, String cantidad, String consumidor, String vendedor) {
         this.img = img;
         this.nproducto = nproducto;
         this.precio = precio;

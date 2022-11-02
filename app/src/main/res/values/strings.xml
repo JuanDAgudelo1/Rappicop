@@ -35,11 +35,9 @@
     <string name="mi_carrito">Mi Carrito</string>
     <string name="vendedor">Vendedor</string>
     <string-array name="categoria">
-
         <item>Comida rapida</item>
         <item>Ensalada</item>
         <item>Bebida</item>
         <item>Postres</item>
-
     </string-array>
 </resources>

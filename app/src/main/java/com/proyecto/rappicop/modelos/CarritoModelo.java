@@ -1,4 +1,4 @@
-package com.example.rapicoop;
+package com.proyecto.rappicop.modelos;
 
 public class CarritoModelo {
 
