@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".vendedor.Vendedor"
-    android:background="#F9F2ED">
+    android:background="#F9F2ED"
+    tools:context=".vendedor.Vendedor">
 
     <Button
         android:id="@+id/eliminar"

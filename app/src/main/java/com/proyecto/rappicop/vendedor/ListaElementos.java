@@ -18,8 +18,6 @@ public class ListaElementos {
         this.vendedor = vendedor;
     }
 
-
-
     public String getNombrerestaurante() {
         return nombrerestaurante;
     }

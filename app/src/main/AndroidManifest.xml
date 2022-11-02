@@ -39,16 +39,14 @@
             android:name=".actividades.Registro"
             android:exported="false" />
         <activity
-            android:name=".actividades.Login"
+            android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:exported="true"
-            android:name=".actividades.Bienvenido">
-        </activity>
+            android:name=".actividades.Login"
+            android:exported="true" />
         <activity
-            android:name=".MainActivity"
+            android:name=".actividades.Bienvenido"
             android:exported="true"
-            android:label="@string/app_name"
             android:theme="@style/Theme.RappiCop.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -7,14 +7,14 @@
     tools:context=".actividades.Bienvenido">
 
     <ImageView
-        android:foreground="@drawable/fondo_diseno"
         android:id="@+id/imageView2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:foreground="@drawable/fondo_diseno"
         android:scaleType="centerCrop"
         android:src="@drawable/portada"
-        tools:layout_editor_absoluteX="32dp"
-        tools:layout_editor_absoluteY="350dp" />
+        tools:layout_editor_absoluteX="41dp"
+        tools:layout_editor_absoluteY="0dp" />
 
     <TextView
         android:id="@+id/textview2"
@@ -49,40 +49,34 @@
         app:layout_constraintTop_toTopOf="@id/textview2" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btnRegistrarse"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/boton_diseno"
         android:text="Registrese"
-        android:padding="20dp"
-        android:textAllCaps="false"
-        android:onClick="registrese"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textview3"
-        app:layout_constraintWidth_percent=".8"
-        android:textStyle="bold"
-        app:layout_constraintVertical_bias=".7"
-        android:background="@drawable/boton_diseno"/>
+        app:layout_constraintTop_toBottomOf="@+id/textview3" />
 
-
-    <TextView
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/btnIniciarSesion"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/boton_diseno"
         android:text="@string/iniciar_sesion"
         android:textAlignment="center"
         android:textColor="#FBFBFB"
-        android:textSize="17sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button"
-        app:layout_constraintVertical_bias="0.361"
-        android:onClick="iniciar_sesion"/>
-
-
-
+        app:layout_constraintTop_toBottomOf="@+id/btnRegistrarse" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

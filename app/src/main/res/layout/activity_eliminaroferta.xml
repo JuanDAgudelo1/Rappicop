@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".vendedor.EliminarOferta"
-    android:background="#F9F2ED">
+    android:background="#F9F2ED"
+    tools:context=".vendedor.EliminarOferta">
 
     <TextView
         android:id="@+id/textView13"

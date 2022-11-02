@@ -4,9 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:theme="@style/Theme.Design.NoActionBar"
     android:background="#F9F2ED"
-    >
+    android:theme="@style/Theme.Design.NoActionBar">
 
     <Spinner
         android:id="@+id/spinner"
@@ -17,16 +16,15 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
         android:backgroundTint="#FFB562"
+        android:contentDescription="@string/app_name"
         android:ellipsize="end"
+        android:entries="@array/categoria"
         android:gravity="center_vertical"
         android:lines="1"
-        android:contentDescription="@string/app_name"
-        android:entries="@array/categoria"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
 
     <EditText
@@ -38,7 +36,6 @@
         android:layout_marginEnd="32dp"
         android:ems="10"
         android:hint="Precio"
-
         android:inputType="textPersonName"
         android:textColor="#000000"
         android:textColorHint="#000000"
@@ -46,8 +43,6 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner" />
-
-
 
     <EditText
         android:id="@+id/ubicacion"
@@ -61,13 +56,10 @@
         android:inputType="textPersonName"
         android:textColor="#000000"
         android:textColorHint="#000000"
-
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner" />
-
-
 
     <EditText
         android:id="@+id/descripcion"
@@ -79,7 +71,6 @@
         android:ems="10"
         android:gravity="start|top"
         android:hint="Descripción del producto"
-
         android:inputType="textMultiLine"
         android:textColor="#000000"
         android:textColorHint="#000000"
@@ -94,7 +85,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="20dp"
-        android:text="Categoria "
+        android:text="Categoria"
         android:textColor="#000000"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -111,17 +102,15 @@
         android:layout_marginEnd="32dp"
         android:ems="10"
         android:hint="Nombre del alimento"
-
         android:inputType="textPersonName"
         android:textColor="#000000"
         android:textColorHint="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <Button
-        android:id="@+id/enviar"
+        android:id="@+id/btnEnviarOferta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="#F87474"
@@ -142,7 +131,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_baseline_fastfood_24" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

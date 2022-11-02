@@ -1,8 +1,6 @@
 package com.proyecto.rappicop.vendedor;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -31,15 +29,14 @@ public class EliminarOferta extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_eliminaroferta);
 
-        DatabaseHelper rapidb = new DatabaseHelper(EliminarOferta.this);
-        Logica iu = new Logica(EliminarOferta.this);
-        Intent intent=getIntent();
+        Intent intent = getIntent();
         String usuario = intent.getStringExtra(EXTRA_MESSAGE);
-        String rol = iu.devolver(usuario);
-        listaofertas = new ArrayList<Oferta>();
 
-        usu = (TextView) findViewById(R.id.usuario);
-        tipo = (TextView) findViewById(R.id.tipo);
+        Logica iu = new Logica(EliminarOferta.this);
+        String rol = iu.getRolPorUsuario(usuario);
+
+        usu = findViewById(R.id.usuario);
+        tipo = findViewById(R.id.tipo);
         tipo.setText(rol);
         usu.setText(usuario);
 
@@ -55,7 +52,7 @@ public class EliminarOferta extends AppCompatActivity {
             // TODO: ajustar imagen
 //            Bitmap bim = BitmapFactory.decodeByteArray(x.getImagen(), 0, x.getImagen().length);
 
-            elements.add(new ListaElementos(bim, x.getNombre(), x.getUbicacion(), palo, x.getUsuario()));
+            elements.add(new ListaElementos(null, x.getNombre(), x.getUbicacion(), palo, x.getUsuario()));
         }
 
         adaptadorLista = new EliminarAdaptador(elements, this, usu.getText().toString());
