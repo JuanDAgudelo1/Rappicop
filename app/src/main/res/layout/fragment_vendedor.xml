@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F9F2ED"
+    android:background="@drawable/cocina"
     tools:context=".vendedor.Vendedor">
 
     <Button
@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:backgroundTint="#FFB562"
+        android:backgroundTint="@color/purple_500"
         android:text="Consultar ofertas"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -30,7 +30,7 @@
         android:fontFamily="sans-serif-condensed"
         android:text="Vendedor"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:textColor="#3AB0FF"
+        android:textColor="@color/purple_500"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -44,7 +44,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:backgroundTint="#FFB562"
+        android:backgroundTint="@color/purple_500"
         android:text="Ofertar Comida"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
