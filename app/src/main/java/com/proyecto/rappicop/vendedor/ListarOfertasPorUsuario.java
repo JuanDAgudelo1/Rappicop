@@ -15,14 +15,14 @@ import com.proyecto.rappicop.modelos.Usuario;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EliminarOferta extends AppCompatActivity {
+public class ListarOfertasPorUsuario extends AppCompatActivity {
 
     private ArrayList<Oferta> listaofertas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_eliminaroferta);
+        setContentView(R.layout.activity_listarofertaporusuario);
 
         TextView tipo = findViewById(R.id.tipo);
         TextView usu = findViewById(R.id.usuario);
@@ -34,13 +34,13 @@ public class EliminarOferta extends AppCompatActivity {
         tipo.setText(user.getRol());
         usu.setText(usuario);
 
-        Logica iu = new Logica(EliminarOferta.this);
+        Logica iu = new Logica(ListarOfertasPorUsuario.this);
         listaofertas = iu.consultaOfertasPorUsuario(usuario);
 
-        init(user);
+        init();
     }
 
-    public void init(Usuario user) {
+    public void init() {
         List<ListaElementos> elements = new ArrayList<>();
 
         for (Oferta x : listaofertas) {
@@ -51,7 +51,7 @@ public class EliminarOferta extends AppCompatActivity {
             elements.add(new ListaElementos(null, x.getNombre(), x.getUbicacion(), palo, x.getUsuario()));
         }
 
-        EliminarAdaptador adaptadorLista = new EliminarAdaptador(elements, this, user.getUsuario());
+        OfertaAdaptador adaptadorLista = new OfertaAdaptador(elements, this, true);
 
         RecyclerView recyclerView = findViewById(R.id.listaRecycler);
         recyclerView.setHasFixedSize(true);

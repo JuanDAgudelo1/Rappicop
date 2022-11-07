@@ -15,11 +15,11 @@ public class FragmentoAdaptador extends FragmentStateAdapter {
     @NonNull
     @Override
     public Fragment createFragment(int position) {
-        switch (position){
+        switch (position) {
             case 1:
-            return new SegundoFragment();
+                return new SegundoFragment();
             case 2:
-                return new TercerFragment();
+                return new FavoritoNuevoFragment();
         }
 
         return new PrimerFragment();

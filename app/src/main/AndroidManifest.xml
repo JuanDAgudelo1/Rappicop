@@ -16,7 +16,7 @@
             android:name=".actividades.Vendedor"
             android:exported="false" />
         <activity
-            android:name=".vendedor.EliminarOferta"
+            android:name=".vendedor.ListarOfertasPorUsuario"
             android:exported="false" />
         <activity
             android:name=".adaptadores.CarritoAdaptador"
