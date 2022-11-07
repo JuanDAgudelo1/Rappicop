@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.proyecto.rappicop.DB.DatabaseHelper;
 import com.proyecto.rappicop.MainActivity;
 import com.proyecto.rappicop.R;
+import com.proyecto.rappicop.modelos.Usuario;
 
 public class Login extends AppCompatActivity {
 
@@ -42,14 +43,16 @@ public class Login extends AppCompatActivity {
         SQLiteDatabase db = rapidb.getReadableDatabase();
 
         String[] parametros = {campoUsuarioLogin.getText().toString(), campoContrasenaLogin.getText().toString()};
-        String[] campos = {"usuario", "contraseña"};
+        String[] campos = {"usuario", "contraseña", "nombre", "correo", "rol"};
 
         try {
             Cursor cursor = db.query(rapidb.getTableName(), campos, "usuario" + "=? AND " + "contraseña" + "=?", parametros, null, null, null);
             cursor.moveToFirst();
             if (cursor.getString(1).equals(contrasena.getText().toString())) {
                 Intent siguiente = new Intent(this, MainActivity.class);
-                siguiente.putExtra("mesagge", campoUsuarioLogin.getText().toString());
+
+                Usuario usuario = new Usuario(cursor.getString(0), cursor.getString(2), cursor.getString(3), cursor.getString(4));
+                siguiente.putExtra("user", usuario);
                 startActivity(siguiente);
             } else {
                 Toast.makeText(getApplicationContext(), "Contraseña incorrecta", Toast.LENGTH_LONG).show();

@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,12 +17,14 @@ public class Registro extends AppCompatActivity {
 
     Button crear;
     EditText usuario, nombre, correo, contrasena, conficontra;
+    RadioGroup radioRol;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro);
 
+        radioRol = findViewById(R.id.groupRol);
         crear = findViewById(R.id.button);
 
         usuario = findViewById(R.id.usuario);
@@ -36,8 +40,12 @@ public class Registro extends AppCompatActivity {
             String Contrasena = contrasena.getText().toString();
             String ConfirmarContrasena = conficontra.getText().toString();
 
+            int selectedId = radioRol.getCheckedRadioButtonId();
+            RadioButton radioRol = findViewById(selectedId);
+            String Rol = radioRol.getText().toString();
+
             Logica crearusuario = new Logica(Registro.this);
-            long id = crearusuario.nuevoUsuario(Usuario, Nombres, Correo, Contrasena, ConfirmarContrasena);
+            long id = crearusuario.nuevoUsuario(Usuario, Nombres, Correo, Contrasena, ConfirmarContrasena, Rol);
 
             if (id > 0) {
                 Toast.makeText(Registro.this, "Registro guardado", Toast.LENGTH_LONG).show();

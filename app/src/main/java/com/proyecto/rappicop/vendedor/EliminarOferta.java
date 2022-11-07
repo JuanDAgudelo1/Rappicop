@@ -10,13 +10,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.proyecto.rappicop.DB.Logica;
 import com.proyecto.rappicop.R;
+import com.proyecto.rappicop.modelos.Usuario;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class EliminarOferta extends AppCompatActivity {
 
-    public static final String EXTRA_MESSAGE = "mesagge";
     ArrayList<Oferta> listaofertas;
     RecyclerView recyclerView;
     EliminarAdaptador adaptadorLista;
@@ -30,14 +30,14 @@ public class EliminarOferta extends AppCompatActivity {
         setContentView(R.layout.activity_eliminaroferta);
 
         Intent intent = getIntent();
-        String usuario = intent.getStringExtra(EXTRA_MESSAGE);
+        Usuario user = (Usuario) intent.getSerializableExtra("user");
+        String usuario = user.getUsuario();
 
         Logica iu = new Logica(EliminarOferta.this);
-        String rol = iu.getRolPorUsuario(usuario);
 
         usu = findViewById(R.id.usuario);
         tipo = findViewById(R.id.tipo);
-        tipo.setText(rol);
+        tipo.setText(user.getRol());
         usu.setText(usuario);
 
         listaofertas = iu.consultaOfertasPorUsuario(usuario);

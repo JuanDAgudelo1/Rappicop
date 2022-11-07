@@ -24,7 +24,7 @@ public class Logica extends DatabaseHelper {
     /**
      * Usuario
      */
-    public long nuevoUsuario(String Usuario, String Nombres, String Correo, String Contrasena, String ConfirmarContrasena) {
+    public long nuevoUsuario(String Usuario, String Nombres, String Correo, String Contrasena, String ConfirmarContrasena, String rol) {
         long id = 0;
 
         try {
@@ -37,6 +37,7 @@ public class Logica extends DatabaseHelper {
             values.put("usuario", Usuario);
             values.put("contraseña", Contrasena);
             values.put("confirmarcontraseña", ConfirmarContrasena);
+            values.put("rol", rol);
 
             id = db.insert(getTableName(), null, values);
         } catch (Exception ex) {
@@ -44,18 +45,6 @@ public class Logica extends DatabaseHelper {
         }
 
         return id;
-    }
-
-    public String getRolPorUsuario(String user) {
-        DatabaseHelper rapidb = new DatabaseHelper(context);
-        SQLiteDatabase db = rapidb.getWritableDatabase();
-
-        Cursor cursorUsuarios = db.rawQuery("SELECT * FROM " + getTableName() + " WHERE usuario LIKE '" + user + "'", null);
-        cursorUsuarios.moveToFirst();
-
-        // TODO: añadir campo rol
-//        return cursorUsuarios.getString(7);
-        return "admin";
     }
 
     /**

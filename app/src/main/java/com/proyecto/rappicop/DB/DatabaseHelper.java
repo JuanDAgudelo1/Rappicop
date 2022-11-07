@@ -10,7 +10,7 @@ import androidx.annotation.Nullable;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     public static final String DATABASE_NAME = "Rappicop";
-    public static final int DATABASE_VERSION = 18;
+    public static final int DATABASE_VERSION = 19;
     public static final String TABLE_NAME = "t_usuarios";
     public static final String TABLE_OFERTA = "t_ofertas";
     public static final String TABLE_CARRITO = "t_carrito";
@@ -22,7 +22,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create table " + TABLE_NAME + "(id INTEGER PRIMARY KEY AUTOINCREMENT,usuario TEXT,"
-                + "nombre TEXT,correo TEXT,contraseña TEXT,confirmarcontraseña TEXT)");
+                + "nombre TEXT,correo TEXT,contraseña TEXT,confirmarcontraseña TEXT, rol TEXT)");
 
         db.execSQL("create table " + TABLE_OFERTA + "(id INTEGER PRIMARY KEY AUTOINCREMENT,usuario TEXT,"
                 + "nombre TEXT,categoria TEXT,precio INTEGER,ubicacion TEXT,descripcion TEXT,imagen BLOB)");

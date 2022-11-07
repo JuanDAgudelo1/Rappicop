@@ -16,6 +16,7 @@ import com.proyecto.rappicop.DB.Logica;
 import com.proyecto.rappicop.R;
 import com.proyecto.rappicop.modelos.CarritoModelo;
 import com.proyecto.rappicop.modelos.ListaCarritoModelo;
+import com.proyecto.rappicop.modelos.Usuario;
 import com.proyecto.rappicop.vendedor.Oferta;
 import com.proyecto.rappicop.vendedor.OfertaConsumidor;
 
@@ -24,7 +25,6 @@ import java.util.List;
 
 public class CarritoAdaptador extends AppCompatActivity {
 
-    public static final String EXTRA_MESSAGE = "mesagge";
     ArrayList<CarritoModelo> listacarrito;
 
     @Override
@@ -36,7 +36,8 @@ public class CarritoAdaptador extends AppCompatActivity {
         Button boton = findViewById(R.id.iroferta);
 
         Intent intent = getIntent();
-        String usuario = intent.getStringExtra(EXTRA_MESSAGE);
+        Usuario user = (Usuario) intent.getSerializableExtra("user");
+        String usuario = user.getUsuario();
 
         Logica iu = new Logica(CarritoAdaptador.this);
 
@@ -50,7 +51,7 @@ public class CarritoAdaptador extends AppCompatActivity {
 
         boton.setOnClickListener(view -> {
             Intent i = new Intent(CarritoAdaptador.this, OfertaConsumidor.class);
-            i.putExtra(OfertaConsumidor.EXTRA_MESSAGE, usuario);
+            i.putExtra("user", user);
             startActivity(i);
         });
     }

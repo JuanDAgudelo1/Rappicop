@@ -39,12 +39,12 @@
             app:layout_constraintStart_toEndOf="@+id/editText3" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/txtBienvenida"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="6dp"
             android:fontFamily="@font/amarante"
-            android:text="Hola Pepito"
+            android:text="Hola!"
             android:textColor="@color/white"
             android:textSize="35sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -59,22 +59,23 @@
             android:text="¿Que quieres comer?"
             android:textColor="@color/white"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+            app:layout_constraintTop_toBottomOf="@+id/txtBienvenida" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/home_hori"
-            android:layout_margin="6dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="6dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/home_verti"
-            android:layout_margin="6dp"
-            android:layout_marginTop="6dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="6dp"
+            android:layout_marginTop="6dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/home_hori" />

@@ -12,12 +12,12 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.proyecto.rappicop.R;
+import com.proyecto.rappicop.modelos.Usuario;
 
 public class Vendedor extends AppCompatActivity {
 
     Button ofertar;
     Button eliminar;
-    public static final String EXTRA_MESSAGE = "mesagge";
 
     @Nullable
     @Override
@@ -34,17 +34,17 @@ public class Vendedor extends AppCompatActivity {
         eliminar = findViewById(R.id.eliminar);
 
         Intent intent = getIntent();
-        String usuario = intent.getStringExtra(EXTRA_MESSAGE);
+        Usuario user = (Usuario) intent.getSerializableExtra("user");
 
         ofertar.setOnClickListener(view -> {
             Intent i = new Intent(Vendedor.this, OfertarAlimento.class);
-            i.putExtra(OfertarAlimento.EXTRA_MESSAGE, usuario);
+            i.putExtra("user", user);
             startActivity(i);
         });
 
         eliminar.setOnClickListener(view -> {
             Intent i = new Intent(Vendedor.this, EliminarOferta.class);
-            i.putExtra(OfertarAlimento.EXTRA_MESSAGE, usuario);
+            i.putExtra("user", user);
             startActivity(i);
         });
     }

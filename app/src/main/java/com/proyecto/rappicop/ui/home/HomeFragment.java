@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -16,6 +17,7 @@ import com.proyecto.rappicop.adaptadores.HomeVertiAdaptador;
 import com.proyecto.rappicop.adaptadores.UpdateVertical;
 import com.proyecto.rappicop.modelos.HomeHoriModelo;
 import com.proyecto.rappicop.modelos.HomeVertiModelo;
+import com.proyecto.rappicop.modelos.Usuario;
 
 import java.util.ArrayList;
 
@@ -25,9 +27,10 @@ public class HomeFragment extends Fragment implements UpdateVertical {
     ArrayList<HomeHoriModelo> homeHoriModeloList;
     HomeHoriAdaptador homeHoriAdaptador;
 
-    /////////////////////Vertical
     ArrayList<HomeVertiModelo> homeVertiModelolist;
     HomeVertiAdaptador homeVertiAdaptador;
+
+    TextView txtBienvenida;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -36,6 +39,10 @@ public class HomeFragment extends Fragment implements UpdateVertical {
 
         homehorizontal = root.findViewById(R.id.home_hori);
         homevertical = root.findViewById(R.id.home_verti);
+        txtBienvenida = root.findViewById(R.id.txtBienvenida);
+
+        Usuario user = (Usuario) getActivity().getIntent().getSerializableExtra("user");
+        txtBienvenida.setText("Hola " + user.getNombre());
 
         homeHoriModeloList = new ArrayList<>();
         homeHoriModeloList.add(new HomeHoriModelo(R.drawable.pizza, "Pizza"));

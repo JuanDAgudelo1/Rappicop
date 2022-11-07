@@ -12,13 +12,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.proyecto.rappicop.DB.Logica;
 import com.proyecto.rappicop.R;
+import com.proyecto.rappicop.modelos.Usuario;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class OfertaConsumidor extends AppCompatActivity {
-
-    public static final String EXTRA_MESSAGE = "mesagge";
 
     ArrayList<Oferta> listaofertas;
     RecyclerView recyclerView;
@@ -33,10 +32,11 @@ public class OfertaConsumidor extends AppCompatActivity {
         setContentView(R.layout.activity_ofertasconsumidor);
 
         Intent intent = getIntent();
-        String usuario = intent.getStringExtra(EXTRA_MESSAGE);
+        Usuario user = (Usuario) intent.getSerializableExtra("user");
+        String usuario = user.getUsuario();
+        String rol = user.getRol();
 
         Logica iu = new Logica(OfertaConsumidor.this);
-        String rol = iu.getRolPorUsuario(usuario);
         listaofertas = new ArrayList<>();
 
         usu = findViewById(R.id.usuario);
@@ -57,7 +57,7 @@ public class OfertaConsumidor extends AppCompatActivity {
             Oferta oferta = listaofertas.get(recyclerView.getChildAdapterPosition(view));
             Intent i = new Intent(OfertaConsumidor.this, DescripcionOferta.class);
             String[] cap = {oferta.getNombre(), usuario};
-            i.putExtra(String.valueOf(DescripcionOferta.EXTRA_MESSAGE), cap);
+            i.putExtra("user", user);
             startActivity(i);
         });
     }

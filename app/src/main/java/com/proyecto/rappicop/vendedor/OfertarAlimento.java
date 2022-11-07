@@ -16,14 +16,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.proyecto.rappicop.DB.Logica;
 import com.proyecto.rappicop.R;
+import com.proyecto.rappicop.modelos.Usuario;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 
 public class OfertarAlimento extends AppCompatActivity {
-
-    public static final String EXTRA_MESSAGE = "mesagge";
 
     Button subir;
     Button enviar;
@@ -51,7 +50,8 @@ public class OfertarAlimento extends AppCompatActivity {
         descripcion = findViewById(R.id.descripcion);
 
         Intent intent = getIntent();
-        String usuario = intent.getStringExtra(EXTRA_MESSAGE);
+        Usuario user = (Usuario) intent.getSerializableExtra("user");
+        String usuario = user.getUsuario();
 
 //        subir.setOnClickListener(view -> {
 //            Intent intent1 = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
@@ -73,7 +73,7 @@ public class OfertarAlimento extends AppCompatActivity {
             if (id > 0) {
                 Toast.makeText(OfertarAlimento.this, "Oferta creada", Toast.LENGTH_LONG).show();
                 Intent i = new Intent(OfertarAlimento.this, Vendedor.class);
-                i.putExtra(OfertarAlimento.EXTRA_MESSAGE, usuario);
+                i.putExtra("user", user);
                 startActivity(i);
                 finish();
             } else {
