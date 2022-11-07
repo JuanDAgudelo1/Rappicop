@@ -38,4 +38,5 @@
         <item>Bebida</item>
         <item>Postres</item>
     </string-array>
+    <string name="title_activity_vendedor">Vendedor</string>
 </resources>

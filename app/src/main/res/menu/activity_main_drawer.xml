@@ -20,9 +20,5 @@
             android:id="@+id/nav_tu_carrito"
             android:icon="@drawable/ic_baseline_shopping_cart_24"
             android:title="@string/tu_carrito" />
-        <item
-            android:id="@+id/vendedorFragment"
-            android:icon="@drawable/ic_baseline_kitchen_24"
-            android:title="@string/vendedor" />
     </group>
 </menu>

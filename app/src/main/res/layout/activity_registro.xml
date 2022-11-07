@@ -36,11 +36,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:fontFamily="@font/inknut_antiqua_medium"
         android:text="@string/registro"
         android:textAlignment="center"
         android:textColor="#FBFBFB"
         android:textSize="19sp"
-        android:fontFamily="@font/inknut_antiqua_medium"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -55,7 +55,7 @@
         android:backgroundTint="#CCCCCC"
         android:drawableLeft="@drawable/ic_baseline_account_circle_24"
         android:drawablePadding="13dp"
-       android:hint="Nombre Completo"
+        android:hint="Nombre Completo"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
         android:textSize="19sp"
@@ -69,6 +69,7 @@
         android:id="@+id/correo"
         android:layout_width="300dp"
         android:layout_height="45dp"
+        android:layout_marginTop="10dp"
         android:backgroundTint="#CCCCCC"
         android:drawableLeft="@drawable/ic_baseline_email_24"
         android:drawablePadding="13dp"
@@ -76,7 +77,6 @@
         android:textColor="@color/white"
         android:textColorHint="@color/white"
         android:textSize="19sp"
-        android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
@@ -87,6 +87,7 @@
         android:id="@+id/usuario"
         android:layout_width="300dp"
         android:layout_height="45dp"
+        android:layout_marginTop="10dp"
         android:backgroundTint="#CCCCCC"
         android:drawableLeft="@drawable/ic_baseline_email_24"
         android:drawablePadding="13dp"
@@ -94,7 +95,6 @@
         android:textColor="@color/white"
         android:textColorHint="@color/white"
         android:textSize="19sp"
-        android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
@@ -106,13 +106,13 @@
         android:id="@+id/contraseña"
         android:layout_width="300dp"
         android:layout_height="45dp"
+        android:layout_marginTop="10dp"
         android:backgroundTint="#CCCCCC"
         android:drawableLeft="@drawable/ic_baseline_vpn_key_24"
         android:drawablePadding="13dp"
         android:hint="Contraseña"
         android:inputType="textPassword"
         android:textColor="@color/white"
-        android:layout_marginTop="10dp"
         android:textColorHint="@color/white"
         android:textSize="19sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -126,13 +126,13 @@
         android:id="@+id/conficontraseña"
         android:layout_width="300dp"
         android:layout_height="45dp"
+        android:layout_marginTop="10dp"
         android:backgroundTint="#CCCCCC"
         android:drawableLeft="@drawable/ic_baseline_vpn_key_24"
         android:drawablePadding="13dp"
         android:hint="Confirmar Contraseña"
-        android:textColor="@color/white"
-        android:layout_marginTop="10dp"
         android:inputType="textPassword"
+        android:textColor="@color/white"
         android:textColorHint="@color/white"
         android:textSize="19sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -142,24 +142,22 @@
         app:layout_goneMarginTop="30dp" />
 
 
-
     <RadioGroup
-        android:id="@+id/genders"
-
+        android:id="@+id/groupRol"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="8dp"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/conficontraseña"
-        android:orientation="horizontal">
+        app:layout_constraintTop_toBottomOf="@+id/conficontraseña">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Genero"
+            android:text="Rol"
             android:textColor="@color/white"
             android:textSize="15dp" />
 
@@ -169,8 +167,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
+            android:text="Comprador"
             android:textColor="@color/white"
-            android:text="Masculino"
             android:textSize="15sp"
             android:value="1" />
 
@@ -178,9 +176,9 @@
             android:id="@+id/radioButton_female"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/white"
             android:layout_marginLeft="10dp"
-            android:text="Femenino"
+            android:text="Vendedor"
+            android:textColor="@color/white"
             android:textSize="15sp"
             android:value="2" />
 
@@ -189,19 +187,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
+            android:text="Domiciliario"
             android:textColor="@color/white"
-            android:text="Otro"
             android:textSize="15sp"
             android:value="2" />
 
     </RadioGroup>
 
     <Button
-        android:onClick="envioDatos"
         android:id="@+id/button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@drawable/boton_diseno"
+        android:onClick="envioDatos"
         android:padding="20dp"
         android:text="Registrese"
         android:textAllCaps="false"
@@ -209,7 +207,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/genders"
+        app:layout_constraintTop_toBottomOf="@+id/groupRol"
         app:layout_constraintVertical_bias="0.436"
         app:layout_constraintWidth_percent=".8" />
 
@@ -223,25 +221,24 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias=".3"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button"
-        app:layout_constraintHorizontal_bias=".3"/>
+        app:layout_constraintTop_toBottomOf="@+id/button" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="iniciar_sesion"
         android:text="@string/iniciar_sesion"
         android:textAlignment="center"
         android:textColor="@color/purple_500"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:onClick="iniciar_sesion"
         app:layout_constraintBottom_toBottomOf="@+id/imageView3"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias=".1"
         app:layout_constraintStart_toEndOf="@+id/textView6"
-        app:layout_constraintTop_toBottomOf="@+id/button"
-        app:layout_constraintHorizontal_bias=".1"/>
-
+        app:layout_constraintTop_toBottomOf="@+id/button" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

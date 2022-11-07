@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.proyecto.rappicop.DB.Logica;
 import com.proyecto.rappicop.R;
+import com.proyecto.rappicop.actividades.Vendedor;
 import com.proyecto.rappicop.modelos.Usuario;
 
 import java.io.ByteArrayOutputStream;

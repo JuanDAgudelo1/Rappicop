@@ -19,7 +19,6 @@ import com.proyecto.rappicop.modelos.Usuario;
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
-    private TextView txtNavNombre, txtNavCorreo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,8 +33,8 @@ public class MainActivity extends AppCompatActivity {
         NavigationView navigationView = binding.navView;
 
         View headerView = navigationView.getHeaderView(0);
-        txtNavNombre = headerView.findViewById(R.id.navNombre);
-        txtNavCorreo = headerView.findViewById(R.id.navCorreo);
+        TextView txtNavNombre = headerView.findViewById(R.id.navNombre);
+        TextView txtNavCorreo = headerView.findViewById(R.id.navCorreo);
 
         Usuario user = (Usuario) getIntent().getSerializableExtra("user");
         txtNavNombre.setText(user.getNombre());
@@ -44,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_comida_diaria, R.id.nav_favorito, R.id.nav_tu_carrito, R.id.vendedorFragment)
+                R.id.nav_home, R.id.nav_comida_diaria, R.id.nav_favorito, R.id.nav_tu_carrito)
                 .setOpenableLayout(drawer)
                 .build();
 

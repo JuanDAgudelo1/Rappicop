@@ -17,34 +17,30 @@ import java.util.List;
 
 public class EliminarOferta extends AppCompatActivity {
 
-    ArrayList<Oferta> listaofertas;
-    RecyclerView recyclerView;
-    EliminarAdaptador adaptadorLista;
-
-    TextView usu;
-    TextView tipo;
+    private ArrayList<Oferta> listaofertas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_eliminaroferta);
 
+        TextView tipo = findViewById(R.id.tipo);
+        TextView usu = findViewById(R.id.usuario);
+
         Intent intent = getIntent();
         Usuario user = (Usuario) intent.getSerializableExtra("user");
         String usuario = user.getUsuario();
 
-        Logica iu = new Logica(EliminarOferta.this);
-
-        usu = findViewById(R.id.usuario);
-        tipo = findViewById(R.id.tipo);
         tipo.setText(user.getRol());
         usu.setText(usuario);
 
+        Logica iu = new Logica(EliminarOferta.this);
         listaofertas = iu.consultaOfertasPorUsuario(usuario);
-        init();
+
+        init(user);
     }
 
-    public void init() {
+    public void init(Usuario user) {
         List<ListaElementos> elements = new ArrayList<>();
 
         for (Oferta x : listaofertas) {
@@ -55,9 +51,9 @@ public class EliminarOferta extends AppCompatActivity {
             elements.add(new ListaElementos(null, x.getNombre(), x.getUbicacion(), palo, x.getUsuario()));
         }
 
-        adaptadorLista = new EliminarAdaptador(elements, this, usu.getText().toString());
+        EliminarAdaptador adaptadorLista = new EliminarAdaptador(elements, this, user.getUsuario());
 
-        recyclerView = findViewById(R.id.listaRecycler);
+        RecyclerView recyclerView = findViewById(R.id.listaRecycler);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adaptadorLista);

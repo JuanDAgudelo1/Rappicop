@@ -49,9 +49,22 @@ public class Login extends AppCompatActivity {
             Cursor cursor = db.query(rapidb.getTableName(), campos, "usuario" + "=? AND " + "contraseña" + "=?", parametros, null, null, null);
             cursor.moveToFirst();
             if (cursor.getString(1).equals(contrasena.getText().toString())) {
-                Intent siguiente = new Intent(this, MainActivity.class);
-
                 Usuario usuario = new Usuario(cursor.getString(0), cursor.getString(2), cursor.getString(3), cursor.getString(4));
+
+                Intent siguiente;
+                switch (usuario.getRol()) {
+                    case "Comprador":
+                    default:
+                        siguiente = new Intent(this, MainActivity.class);
+                        break;
+                    case "Vendedor":
+                        siguiente = new Intent(this, Vendedor.class);
+                        break;
+                    case "domicilario":
+                        siguiente = new Intent(this, MainActivity.class);
+                        break;
+                }
+
                 siguiente.putExtra("user", usuario);
                 startActivity(siguiente);
             } else {
