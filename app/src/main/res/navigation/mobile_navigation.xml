@@ -24,7 +24,7 @@
         tools:layout="@layout/fragment_favorito" />
     <fragment
         android:id="@+id/nav_tu_carrito"
-        android:name="com.proyecto.rappicop.ui.carrito.TuCarritoFragment"
+        android:name="com.proyecto.rappicop.ui.carrocompras.CarroComprasFragment"
         android:label="@string/tu_carrito"
         tools:layout="@layout/fragment_tu_carrito" />
 </navigation>

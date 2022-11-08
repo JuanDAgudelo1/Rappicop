@@ -19,9 +19,6 @@
             android:name=".vendedor.ListarOfertasPorUsuario"
             android:exported="false" />
         <activity
-            android:name=".adaptadores.CarritoAdaptador"
-            android:exported="false" />
-        <activity
             android:name=".vendedor.DescripcionOferta"
             android:exported="false" />
         <activity

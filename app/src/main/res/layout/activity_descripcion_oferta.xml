@@ -9,7 +9,7 @@
     tools:context=".vendedor.DescripcionOferta">
 
     <Button
-        android:id="@+id/eliminarbtn"
+        android:id="@+id/btnAgregarCarro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"

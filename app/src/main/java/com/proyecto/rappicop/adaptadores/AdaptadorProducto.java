@@ -1,7 +1,7 @@
 package com.proyecto.rappicop.adaptadores;
 
 import android.content.Context;
-import android.content.Intent;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +17,7 @@ import com.proyecto.rappicop.R;
 import com.proyecto.rappicop.modelos.ListaCarritoModelo;
 
 import java.util.List;
+import java.util.Objects;
 
 public class AdaptadorProducto extends RecyclerView.Adapter<AdaptadorProducto.ViewHolder> {
 
@@ -69,9 +70,9 @@ public class AdaptadorProducto extends RecyclerView.Adapter<AdaptadorProducto.Vi
             descripcion.setText(item.getdescripcion());
             cantidad.setText(item.getCantidad());
 
-            mas.setOnClickListener(view -> {
-                Logica iu = new Logica(context);
+            Logica iu = new Logica(context);
 
+            mas.setOnClickListener(view -> {
                 if (iu.verificarCarrito(item.getConsumidor(), item.getVendedor(), item.getnproducto())) {
                     if (iu.aumentarCantidadCarrito(item.getConsumidor(), item.getVendedor(), item.getnproducto())) {
                         int sum = Integer.parseInt(cantidad.getText().toString()) + 1;
@@ -83,15 +84,15 @@ public class AdaptadorProducto extends RecyclerView.Adapter<AdaptadorProducto.Vi
             });
 
             menos.setOnClickListener(view -> {
-                Logica iu = new Logica(context);
-
                 if (iu.verificarCarrito(item.getConsumidor(), item.getVendedor(), item.getnproducto())) {
                     if (iu.disminuirCantidadCarrito(item.getConsumidor(), item.getVendedor(), item.getnproducto())) {
                         int men = Integer.parseInt(cantidad.getText().toString()) - 1;
                         if (men <= 0) {
-                            Intent i = new Intent(context, CarritoAdaptador.class);
-                            i.putExtra(CarritoAdaptador.EXTRA_MESSAGE, item.getConsumidor());
-                            context.startActivity(i);
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                                mData.removeIf(n -> (Objects.equals(n.getnproducto(), item.getnproducto())));
+                            }
+
+                            notifyDataSetChanged();
                         }
 
                         cantidad.setText(String.valueOf(men));

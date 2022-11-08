@@ -1,6 +1,8 @@
 package com.proyecto.rappicop.vendedor;
 
-public class Oferta {
+import java.io.Serializable;
+
+public class Oferta implements Serializable {
 
     private String usuario;
     private String nombre;

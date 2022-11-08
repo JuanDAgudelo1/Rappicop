@@ -1,8 +1,6 @@
 package com.proyecto.rappicop.vendedor;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -56,8 +54,10 @@ public class OfertaConsumidor extends AppCompatActivity {
         adaptadorLista.setOnClickListener(view -> {
             Oferta oferta = listaofertas.get(recyclerView.getChildAdapterPosition(view));
             Intent i = new Intent(OfertaConsumidor.this, DescripcionOferta.class);
-            String[] cap = {oferta.getNombre(), usuario};
+
+            i.putExtra("oferta", oferta);
             i.putExtra("user", user);
+
             startActivity(i);
         });
     }
@@ -67,9 +67,10 @@ public class OfertaConsumidor extends AppCompatActivity {
 
         for (Oferta x : listaofertas) {
             String palo = "" + x.getPrecio();
-            Bitmap bim = BitmapFactory.decodeByteArray(x.getImagen(), 0, x.getImagen().length);
+//            TODO: fix image
+//            Bitmap bim = BitmapFactory.decodeByteArray(x.getImagen(), 0, x.getImagen().length);
 
-            elements.add(new ListaElementos(bim, x.getNombre(), x.getUbicacion(), palo, x.getUsuario()));
+            elements.add(new ListaElementos(null, x.getNombre(), x.getUbicacion(), palo, x.getUsuario()));
         }
 
         adaptadorLista = new ListaAdaptador(elements, this, usu.getText().toString());

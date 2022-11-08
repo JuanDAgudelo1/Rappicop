@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".adaptadores.CarritoAdaptador"
-    android:background="@drawable/menu">
+    android:background="@drawable/menu"
+    tools:context=".ui.carrocompras.CarroComprasFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/listadeproductos"

@@ -1,8 +1,6 @@
 package com.proyecto.rappicop.vendedor;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -13,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.proyecto.rappicop.DB.Logica;
 import com.proyecto.rappicop.R;
+import com.proyecto.rappicop.modelos.Usuario;
 
 public class DescripcionOferta extends AppCompatActivity {
 
@@ -25,34 +24,32 @@ public class DescripcionOferta extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        String[] dato = intent.getStringArrayExtra(String.valueOf(EXTRA_MESSAGE));
-        String nombre = dato[0];
-        String cliente = dato[1];
+        Oferta oferta = (Oferta) intent.getSerializableExtra("oferta");
+        Usuario user = (Usuario) intent.getSerializableExtra("user");
 
         Logica iu = new Logica(DescripcionOferta.this);
-        Oferta oferta = iu.consultaOfertaPorNombre(nombre);
 
         TextView name = findViewById(R.id.name);
         TextView precio = findViewById(R.id.precio);
         TextView ubi = findViewById(R.id.gps);
         TextView descripcion = findViewById(R.id.description);
         ImageView img = findViewById(R.id.picture);
-        Button eliminarbtn = findViewById(R.id.eliminarbtn);
+        Button btnAgregarCarro = findViewById(R.id.btnAgregarCarro);
 
         name.setText(oferta.getNombre());
         precio.setText(String.valueOf(oferta.getPrecio()));
         ubi.setText(oferta.getUbicacion());
         descripcion.setText(oferta.getDescripcion());
 
-        Bitmap bim = BitmapFactory.decodeByteArray(oferta.getImagen(), 0, oferta.getImagen().length);
-        img.setImageBitmap(bim);
+//        Bitmap bim = BitmapFactory.decodeByteArray(oferta.getImagen(), 0, oferta.getImagen().length);
+//        img.setImageBitmap(bim);
 
-        eliminarbtn.setOnClickListener(view -> {
-            if (iu.verificarCarrito(cliente, oferta.getUsuario(), oferta.getNombre())) {
-                boolean aumentarCantidad = iu.aumentarCantidadCarrito(cliente, oferta.getUsuario(), nombre);
+        btnAgregarCarro.setOnClickListener(view -> {
+            if (iu.verificarCarrito(user.getNombre(), oferta.getUsuario(), oferta.getNombre())) {
+                boolean aumentarCantidad = iu.aumentarCantidadCarrito(user.getNombre(), oferta.getUsuario(), oferta.getNombre());
                 Toast.makeText(DescripcionOferta.this, aumentarCantidad ? "Aumenta cantidad" : "No aumenta", Toast.LENGTH_LONG).show();
             } else {
-                long id = iu.nuevoCarrito(cliente, oferta.getUsuario(), nombre, 1);
+                long id = iu.nuevoCarrito(user.getNombre(), oferta.getUsuario(), oferta.getNombre(), 1);
                 Toast.makeText(DescripcionOferta.this, id > 0 ? "Agregado" : "No fue agregada", Toast.LENGTH_LONG).show();
             }
         });
