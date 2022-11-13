@@ -32,14 +32,14 @@ public class DescripcionOferta extends AppCompatActivity {
         TextView name = findViewById(R.id.name);
         TextView precio = findViewById(R.id.precio);
         TextView ubi = findViewById(R.id.gps);
-        TextView descripcion = findViewById(R.id.description);
+        TextView descrpcion = findViewById(R.id.des);
         ImageView img = findViewById(R.id.picture);
         Button btnAgregarCarro = findViewById(R.id.btnAgregarCarro);
 
         name.setText(oferta.getNombre());
         precio.setText(String.valueOf(oferta.getPrecio()));
         ubi.setText(oferta.getUbicacion());
-        descripcion.setText(oferta.getDescripcion());
+        descrpcion.setText(oferta.getDescripcion());
 
 //        Bitmap bim = BitmapFactory.decodeByteArray(oferta.getImagen(), 0, oferta.getImagen().length);
 //        img.setImageBitmap(bim);

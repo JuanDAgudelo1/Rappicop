@@ -25,12 +25,12 @@
         android:id="@+id/linearLayout2"
         android:layout_width="411dp"
         android:layout_height="274dp"
-        android:background="#FFB562"
+        android:background="@color/purple_500"
         android:orientation="horizontal"
         android:padding="10dp"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="-1dp"
-        tools:layout_editor_absoluteY="16dp">
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="170dp">
 
         <ImageView
             android:id="@+id/picture"
@@ -61,17 +61,17 @@
                 android:id="@+id/gps"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Pizzas la esquina"
+                android:text="Ceditros"
                 android:textAlignment="center"
                 android:textAllCaps="true" />
 
             <TextView
-                android:id="@+id/description"
+                android:id="@+id/des"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp"
                 android:padding="5dp"
-                android:text="Una gran pizza para compartir con tus seres queridos, disfruta de nuestra excelente seleccion de ingredientes."
+                android:text="Una pizza para compartir con tus seres queridos, disfruta de nuestra excelente seleccion de ingredientes."
                 android:textAlignment="center" />
 
             <TextView
