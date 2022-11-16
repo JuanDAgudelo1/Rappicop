@@ -13,7 +13,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final int DATABASE_VERSION = 19;
     public static final String TABLE_NAME = "t_usuarios";
     public static final String TABLE_OFERTA = "t_ofertas";
+    public static final String TABLE_UBICACIONES="t_ubicaciones";
     public static final String TABLE_CARRITO = "t_carrito";
+    public static final String TABLE_ACEPTADO="t_aceptados";
+
 
     public DatabaseHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -29,6 +32,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         db.execSQL("create table " + TABLE_CARRITO + "(id INTEGER PRIMARY KEY AUTOINCREMENT,vendedor TEXT,"
                 + "cliente TEXT,oferta TEXT,cantidad INTEGER)");
+        db.execSQL("create table " + TABLE_UBICACIONES + "(id INTEGER PRIMARY KEY AUTOINCREMENT,usuario TEXT,"
+                + "nombre TEXT,direccion TEXT)");
+
+        db.execSQL("create table " + TABLE_ACEPTADO + "(id INTEGER PRIMARY KEY AUTOINCREMENT,oferta TEXT,"
+                + "cliente TEXT,ubicacion TEXT,cantidad INTEGER, precio INTEGER,domiciliario TEXT, estado TEXT)");
+
     }
 
     @Override
@@ -36,6 +45,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE " + TABLE_NAME);
         db.execSQL("DROP TABLE " + TABLE_OFERTA);
         db.execSQL("DROP TABLE " + TABLE_CARRITO);
+        db.execSQL("DROP TABLE " + TABLE_ACEPTADO);
+        db.execSQL("DROP TABLE " + TABLE_UBICACIONES);
         onCreate(db);
     }
 
@@ -50,4 +61,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public String getTableCarrito() {
         return TABLE_CARRITO;
     }
+
+    public String getTableAceptado() {
+        return TABLE_ACEPTADO;
+    }
+
+    public String getTableUbicaciones() {
+        return TABLE_UBICACIONES;
+    }
+
 }

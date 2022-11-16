@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -12,6 +12,30 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RappiCop"
         tools:targetApi="31">
+        <activity
+            android:name=".actividades.Domilciliario"
+            android:exported="false" />
+        <activity
+            android:name=".domiciliario.Itempedidosespera"
+            android:exported="false" />
+        <activity
+            android:name=".domiciliario.Pedidosdomi"
+            android:exported="false" />
+        <activity
+            android:name=".domiciliario.AceptarOferta"
+            android:exported="false" />
+        <activity
+            android:name=".domiciliario.ofertasaceptadas"
+            android:exported="false" />
+        <activity
+            android:name=".domiciliario.descripcionpedido"
+            android:exported="false" />
+        <activity
+            android:name=".domiciliario.AgregarDireccion"
+            android:exported="false" />
+        <activity
+            android:name=".domiciliario.listadir"
+            android:exported="false" />
         <activity
             android:name=".actividades.Vendedor"
             android:exported="false" />

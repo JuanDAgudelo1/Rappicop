@@ -22,6 +22,7 @@ import com.proyecto.rappicop.modelos.Usuario;
 import java.util.ArrayList;
 
 public class HomeFragment extends Fragment implements UpdateVertical {
+    public static final String EXTRA_MESSAGE="mesagge";
 
     RecyclerView homehorizontal, homevertical;
     ArrayList<HomeHoriModelo> homeHoriModeloList;

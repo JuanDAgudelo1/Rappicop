@@ -25,6 +25,8 @@ import java.io.InputStream;
 
 public class OfertarAlimento extends AppCompatActivity {
 
+    public static final String EXTRA_MESSAGE="mesagge";
+
     Button subir;
     Button enviar;
     ImageView image;

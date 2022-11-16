@@ -61,7 +61,7 @@ public class Login extends AppCompatActivity {
                         siguiente = new Intent(this, Vendedor.class);
                         break;
                     case "domicilario":
-                        siguiente = new Intent(this, MainActivity.class);
+                        siguiente = new Intent(this, Domilciliario.class);
                         break;
                 }
 
