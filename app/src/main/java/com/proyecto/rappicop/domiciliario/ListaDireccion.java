@@ -10,6 +10,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.proyecto.rappicop.DB.Logica;
 import com.proyecto.rappicop.R;
+import com.proyecto.rappicop.adaptadores.AdaptadorDirecciones;
+import com.proyecto.rappicop.modelos.Direccion;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,8 +19,8 @@ import java.util.List;
 public class ListaDireccion extends AppCompatActivity {
     public static final String EXTRA_CODE = "0";
 
-    List<listadirecciones> elements;
-    ArrayList<listadirecciones> listadir;
+    List<Direccion> elements;
+    ArrayList<Direccion> listadir;
     RecyclerView recyclerView;
     AdaptadorDirecciones adaptadorDirecciones;
 
@@ -49,7 +51,7 @@ public class ListaDireccion extends AppCompatActivity {
         init();
 
         adaptadorDirecciones.setOnClickListener(view -> {
-            listadirecciones seleccion = listadir.get(recyclerView.getChildAdapterPosition(view));
+            Direccion seleccion = listadir.get(recyclerView.getChildAdapterPosition(view));
             Intent i = new Intent(ListaDireccion.this, AceptarOferta.class);
             String[] cap = {seleccion.getDireccion(), id};
             i.putExtra(String.valueOf(DescripcionOferta.EXTRA_MESSAGE), cap);
@@ -61,8 +63,8 @@ public class ListaDireccion extends AppCompatActivity {
     public void init() {
         elements = new ArrayList<>();
 
-        for (listadirecciones x : listadir) {
-            elements.add(new listadirecciones(x.getNombre(), x.getDireccion()));
+        for (Direccion x : listadir) {
+            elements.add(new Direccion(x.getNombre(), x.getDireccion()));
         }
 
         adaptadorDirecciones = new AdaptadorDirecciones(elements, this, usu);

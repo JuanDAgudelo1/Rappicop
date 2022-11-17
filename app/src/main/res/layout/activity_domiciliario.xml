@@ -8,21 +8,6 @@
     tools:context=".domiciliario.Domiciliario">
 
     <Button
-        android:id="@+id/btnConsultarOfertas"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:backgroundTint="#FFB562"
-        android:text="Consultar ofertas"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnReportarUbicaciones"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <Button
         android:id="@+id/btnReportarUbicaciones"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

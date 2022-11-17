@@ -26,10 +26,8 @@ public class DescripcionOferta extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_descripcion_oferta);
 
-        DatabaseHelper rapidb = new DatabaseHelper(DescripcionOferta.this);
         Logica iu = new Logica(DescripcionOferta.this);
-        Intent intent=getIntent();
-        String[] dato = intent.getStringArrayExtra(String.valueOf(EXTRA_MESSAGE));
+        String[] dato = getIntent().getStringArrayExtra(String.valueOf(EXTRA_MESSAGE));
         String nombre = dato[0];
         String cliente = dato[1];
 
@@ -49,29 +47,28 @@ public class DescripcionOferta extends AppCompatActivity {
         descripcion.setText(oferta.getDescripcion());
 
 
-
-        Bitmap bim = BitmapFactory.decodeByteArray(oferta.getImagen(),0,oferta.getImagen().length);
+        Bitmap bim = BitmapFactory.decodeByteArray(oferta.getImagen(), 0, oferta.getImagen().length);
         img.setImageBitmap(bim);
 
-        eliminarbtn.setOnClickListener(new View.OnClickListener(){
+        eliminarbtn.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
 
-                if (iu.verificarCarrito(cliente,oferta.getUsuario(),oferta.getNombre())){
+                if (iu.verificarCarrito(cliente, oferta.getUsuario(), oferta.getNombre())) {
 
-                    if (iu.aumentarCantidadCarrito(cliente,oferta.getUsuario(),nombre)){
+                    if (iu.aumentarCantidadCarrito(cliente, oferta.getUsuario(), nombre)) {
                         Toast.makeText(DescripcionOferta.this, "Aumenta cantidad", Toast.LENGTH_LONG).show();
-                    }else {
+                    } else {
                         Toast.makeText(DescripcionOferta.this, "No aumenta", Toast.LENGTH_LONG).show();
                     }
 
-                }else{
-                    long id = iu.nuevoCarrito(cliente,oferta.getUsuario(),nombre,1);
+                } else {
+                    long id = iu.nuevoCarrito(cliente, oferta.getUsuario(), nombre, 1);
 
-                    if(id > 0){
+                    if (id > 0) {
                         Toast.makeText(DescripcionOferta.this, "Agregado", Toast.LENGTH_LONG).show();
-                    }else {
+                    } else {
                         Toast.makeText(DescripcionOferta.this, "No fue agregada", Toast.LENGTH_LONG).show();
                     }
                 }

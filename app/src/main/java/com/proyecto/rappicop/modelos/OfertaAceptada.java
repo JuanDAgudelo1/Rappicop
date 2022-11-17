@@ -1,6 +1,7 @@
-package com.proyecto.rappicop.domiciliario;
+package com.proyecto.rappicop.modelos;
 
 public class OfertaAceptada {
+
     private int id;
     private String oferta;
     private String cliente;

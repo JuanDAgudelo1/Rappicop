@@ -1,14 +1,11 @@
-package com.proyecto.rappicop.domiciliario;
+package com.proyecto.rappicop.modelos;
 
-public class listadirecciones {
+public class Direccion {
 
     public String nombre;
     public String direccion;
 
-    public listadirecciones() {
-    }
-
-    public listadirecciones(String nombre, String direccion) {
+    public Direccion(String nombre, String direccion) {
         this.nombre = nombre;
         this.direccion = direccion;
     }

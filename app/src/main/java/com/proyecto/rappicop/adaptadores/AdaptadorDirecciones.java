@@ -1,4 +1,4 @@
-package com.proyecto.rappicop.domiciliario;
+package com.proyecto.rappicop.adaptadores;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,18 +9,19 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.proyecto.rappicop.R;
+import com.proyecto.rappicop.modelos.Direccion;
 
 import java.util.List;
 
 public class AdaptadorDirecciones extends RecyclerView.Adapter<AdaptadorDirecciones.ViewHolder> implements View.OnClickListener {
+
     private View.OnClickListener listener;
-    private List<listadirecciones> mData;
+    private List<Direccion> mData;
     private LayoutInflater mInflater;
     private Context context;
     private String user;
 
-
-    public AdaptadorDirecciones(List<listadirecciones> itemList, Context context, String user) {
+    public AdaptadorDirecciones(List<Direccion> itemList, Context context, String user) {
         this.mInflater = LayoutInflater.from(context);
         this.context = context;
         this.mData = itemList;
@@ -45,7 +46,7 @@ public class AdaptadorDirecciones extends RecyclerView.Adapter<AdaptadorDireccio
         holder.bindData(mData.get(position));
     }
 
-    public void setItems(List<listadirecciones> items) {
+    public void setItems(List<Direccion> items) {
         mData = items;
     }
 
@@ -55,11 +56,9 @@ public class AdaptadorDirecciones extends RecyclerView.Adapter<AdaptadorDireccio
 
     @Override
     public void onClick(View view) {
-
         if (listener != null) {
             listener.onClick(view);
         }
-
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
@@ -70,14 +69,11 @@ public class AdaptadorDirecciones extends RecyclerView.Adapter<AdaptadorDireccio
 
             nombre = itemView.findViewById(R.id.nombreubi);
             direccion = itemView.findViewById(R.id.descripciondireccion);
-
         }
 
-        void bindData(final listadirecciones item) {
-
+        void bindData(final Direccion item) {
             nombre.setText(item.getNombre());
             direccion.setText(item.getDireccion());
-
         }
 
     }

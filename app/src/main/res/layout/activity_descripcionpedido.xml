@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".domiciliario.descripcionpedido">
+    tools:context=".actividades.DescripcionPedido">
 
     <Button
         android:id="@+id/eliminarbtn"
@@ -78,9 +78,9 @@
                 android:layout_marginTop="10dp"
                 android:padding="5dp"
                 android:text="Direccion de entrega:"
-                android:textSize="14sp"
-                android:textAllCaps="true"
                 android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textSize="14sp"
                 android:textStyle="bold" />
 
             <TextView

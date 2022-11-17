@@ -7,10 +7,10 @@ import android.database.sqlite.SQLiteDatabase;
 
 import androidx.annotation.Nullable;
 
-import com.proyecto.rappicop.domiciliario.OfertaAceptada;
-import com.proyecto.rappicop.domiciliario.listadirecciones;
 import com.proyecto.rappicop.modelos.CarritoModelo;
+import com.proyecto.rappicop.modelos.Direccion;
 import com.proyecto.rappicop.modelos.Oferta;
+import com.proyecto.rappicop.modelos.OfertaAceptada;
 
 import java.util.ArrayList;
 
@@ -385,20 +385,18 @@ public class Logica extends DatabaseHelper {
         return listaofertas;
     }
 
-    public ArrayList<listadirecciones> consultaUbicacion(String usu) {
+    public ArrayList<Direccion> consultaUbicacion(String usu) {
 
         DatabaseHelper rapidb = new DatabaseHelper(context);
         SQLiteDatabase db = rapidb.getWritableDatabase();
 
-        ArrayList<listadirecciones> lista = new ArrayList<listadirecciones>();
+        ArrayList<Direccion> lista = new ArrayList<>();
 
         Cursor cursoroferta = db.rawQuery("SELECT * FROM " + rapidb.getTableUbicaciones() + " WHERE usuario LIKE '" + usu + "'", null);
 
         if (cursoroferta.moveToFirst()) {
             do {
-                listadirecciones listadir = new listadirecciones();
-                listadir.setNombre(cursoroferta.getString(2));
-                listadir.setDireccion(cursoroferta.getString(3));
+                Direccion listadir = new Direccion(cursoroferta.getString(2), cursoroferta.getString(3));
 
                 lista.add(listadir);
             } while (cursoroferta.moveToNext());

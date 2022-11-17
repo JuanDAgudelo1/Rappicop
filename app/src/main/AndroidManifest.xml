@@ -14,7 +14,10 @@
         android:theme="@style/Theme.RappiCop"
         tools:targetApi="31">
         <activity
-            android:name=".domiciliario.Itempedidosespera"
+            android:name=".actividades.DescripcionPedido"
+            android:exported="false" />
+        <activity
+            android:name=".domiciliario.ItemPedidosEnEspera"
             android:exported="false" />
         <activity
             android:name=".domiciliario.AceptarOferta"
@@ -23,16 +26,16 @@
             android:name=".domiciliario.PedidosEnEspera"
             android:exported="false" />
         <activity
-            android:name=".domiciliario.ofertasaceptadas"
-            android:exported="false" />
-        <activity
-            android:name=".domiciliario.descripcionpedido"
+            android:name=".domiciliario.OfertasAceptadas"
             android:exported="false" />
         <activity
             android:name=".domiciliario.AgregarDireccion"
             android:exported="false" />
         <activity
             android:name=".domiciliario.ListaDireccion"
+            android:exported="false" />
+        <activity
+            android:name=".domiciliario.Domiciliario"
             android:exported="false" />
         <activity
             android:name=".vendedor.Vendedor"

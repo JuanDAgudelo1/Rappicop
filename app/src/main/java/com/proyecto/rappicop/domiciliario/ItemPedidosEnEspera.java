@@ -6,7 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.proyecto.rappicop.R;
 
-public class Itempedidosespera extends AppCompatActivity {
+public class ItemPedidosEnEspera extends AppCompatActivity {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
