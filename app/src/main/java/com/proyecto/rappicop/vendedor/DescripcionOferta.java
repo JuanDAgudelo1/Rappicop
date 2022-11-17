@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.proyecto.rappicop.DB.Logica;
 import com.proyecto.rappicop.R;
 import com.proyecto.rappicop.modelos.Usuario;
+import com.proyecto.rappicop.modelos.Oferta;
 
 public class DescripcionOferta extends AppCompatActivity {
 

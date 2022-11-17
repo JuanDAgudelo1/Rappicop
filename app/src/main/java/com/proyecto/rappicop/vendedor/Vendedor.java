@@ -1,4 +1,4 @@
-package com.proyecto.rappicop.actividades;
+package com.proyecto.rappicop.vendedor;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,8 +8,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.proyecto.rappicop.R;
 import com.proyecto.rappicop.modelos.Usuario;
-import com.proyecto.rappicop.vendedor.ListarOfertasPorUsuario;
-import com.proyecto.rappicop.vendedor.OfertarAlimento;
 
 public class Vendedor extends AppCompatActivity {
 
@@ -31,7 +29,7 @@ public class Vendedor extends AppCompatActivity {
         });
 
         verOfertas.setOnClickListener(view -> {
-            Intent i = new Intent(this, ListarOfertasPorUsuario.class);
+            Intent i = new Intent(this, ListarOfertasPorVendedor.class);
             i.putExtra("user", user);
             startActivity(i);
         });

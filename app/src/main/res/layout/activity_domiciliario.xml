@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".actividades.Domilciliario"
-    android:background="#F9F2ED">
+    android:background="#F9F2ED"
+    tools:context=".domiciliario.Domiciliario">
 
     <Button
-        android:id="@+id/eliminar2"
+        android:id="@+id/btnConsultarOfertas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
@@ -19,11 +19,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pedido"
+        app:layout_constraintTop_toBottomOf="@+id/btnReportarUbicaciones"
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
-        android:id="@+id/cerrar"
+        android:id="@+id/btnReportarUbicaciones"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
@@ -34,11 +34,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/eliminar2"
+        app:layout_constraintTop_toBottomOf="@+id/btnReportarEstado"
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
-        android:id="@+id/eliminar"
+        android:id="@+id/btnReportarEstado"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
@@ -49,11 +49,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pedido"
+        app:layout_constraintTop_toBottomOf="@+id/btnPedidosEnEspera"
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
-        android:id="@+id/pedido"
+        android:id="@+id/btnPedidosEnEspera"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"

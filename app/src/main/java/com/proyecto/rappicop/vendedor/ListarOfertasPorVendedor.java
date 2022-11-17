@@ -10,12 +10,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.proyecto.rappicop.DB.Logica;
 import com.proyecto.rappicop.R;
+import com.proyecto.rappicop.modelos.ListaElementos;
 import com.proyecto.rappicop.modelos.Usuario;
+import com.proyecto.rappicop.modelos.Oferta;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListarOfertasPorUsuario extends AppCompatActivity {
+public class ListarOfertasPorVendedor extends AppCompatActivity {
 
     private ArrayList<Oferta> listaofertas;
 
@@ -34,7 +36,7 @@ public class ListarOfertasPorUsuario extends AppCompatActivity {
         tipo.setText(user.getRol());
         usu.setText(usuario);
 
-        Logica iu = new Logica(ListarOfertasPorUsuario.this);
+        Logica iu = new Logica(ListarOfertasPorVendedor.this);
         listaofertas = iu.consultaOfertasPorUsuario(usuario);
 
         init();
@@ -52,7 +54,6 @@ public class ListarOfertasPorUsuario extends AppCompatActivity {
         }
 
         OfertaAdaptador adaptadorLista = new OfertaAdaptador(elements, this, true);
-
         RecyclerView recyclerView = findViewById(R.id.listaRecycler);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

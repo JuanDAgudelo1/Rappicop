@@ -1,4 +1,4 @@
-package com.proyecto.rappicop.vendedor;
+package com.proyecto.rappicop.actividades;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.proyecto.rappicop.DB.Logica;
 import com.proyecto.rappicop.R;
+import com.proyecto.rappicop.modelos.ListaElementos;
 
 import java.util.List;
 

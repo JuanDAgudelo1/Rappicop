@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/cocina"
-    tools:context=".actividades.Vendedor">
+    tools:context=".vendedor.Vendedor">
 
     <Button
         android:id="@+id/verOfertas"

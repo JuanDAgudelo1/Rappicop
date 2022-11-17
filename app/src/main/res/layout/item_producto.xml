@@ -57,6 +57,16 @@
                 android:textStyle="bold" />
 
             <Button
+                android:id="@+id/Buttonminus"
+                android:layout_width="45dp"
+                android:layout_height="50dp"
+                android:layout_marginRight="5dp"
+                android:layout_weight="0"
+                android:background="@drawable/boton_diseno"
+                android:text="-"
+                android:textSize="34sp" />
+
+            <Button
                 android:id="@+id/Buttonplus"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
@@ -64,16 +74,6 @@
                 android:layout_weight="0"
                 android:background="@drawable/boton_diseno"
                 android:text="+"
-                android:textSize="34sp" />
-
-            <Button
-                android:id="@+id/Buttonminus"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginRight="5dp"
-                android:layout_weight="0"
-                android:background="@drawable/boton_diseno"
-                android:text="-"
                 android:textSize="34sp" />
 
             <TextView

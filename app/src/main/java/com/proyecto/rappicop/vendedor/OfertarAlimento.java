@@ -16,7 +16,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.proyecto.rappicop.DB.Logica;
 import com.proyecto.rappicop.R;
-import com.proyecto.rappicop.actividades.Vendedor;
 import com.proyecto.rappicop.modelos.Usuario;
 
 import java.io.ByteArrayOutputStream;
@@ -25,32 +24,19 @@ import java.io.InputStream;
 
 public class OfertarAlimento extends AppCompatActivity {
 
-    public static final String EXTRA_MESSAGE="mesagge";
-
-    Button subir;
-    Button enviar;
-    ImageView image;
-
-    EditText name;
-    Spinner categoria;
-    EditText precio;
-    EditText ubicacion;
-    EditText descripcion;
-
-    Bitmap bitmap;
+    private ImageView image;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ofertarcomida);
 
-        enviar = findViewById(R.id.btnEnviarOferta);
-
-        name = findViewById(R.id.name);
-        categoria = findViewById(R.id.spinner);
-        precio = findViewById(R.id.precio);
-        ubicacion = findViewById(R.id.ubicacion);
-        descripcion = findViewById(R.id.descripcion);
+        Button enviar = findViewById(R.id.btnEnviarOferta);
+        EditText name = findViewById(R.id.name);
+        Spinner categoria = findViewById(R.id.spinner);
+        EditText precio = findViewById(R.id.precio);
+        EditText ubicacion = findViewById(R.id.ubicacion);
+        EditText descripcion = findViewById(R.id.descripcion);
 
         Intent intent = getIntent();
         Usuario user = (Usuario) intent.getSerializableExtra("user");
@@ -99,7 +85,7 @@ public class OfertarAlimento extends AppCompatActivity {
             Uri path = data.getData();
             try {
                 InputStream inputStream = getContentResolver().openInputStream(path);
-                bitmap = BitmapFactory.decodeStream(inputStream);
+                Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
                 image.setImageBitmap(bitmap);
             } catch (FileNotFoundException e) {
                 e.printStackTrace();

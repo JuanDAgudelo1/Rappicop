@@ -13,7 +13,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.proyecto.rappicop.DB.DatabaseHelper;
 import com.proyecto.rappicop.MainActivity;
 import com.proyecto.rappicop.R;
+import com.proyecto.rappicop.domiciliario.Domiciliario;
 import com.proyecto.rappicop.modelos.Usuario;
+import com.proyecto.rappicop.vendedor.Vendedor;
 
 public class Login extends AppCompatActivity {
 
@@ -60,8 +62,8 @@ public class Login extends AppCompatActivity {
                     case "Vendedor":
                         siguiente = new Intent(this, Vendedor.class);
                         break;
-                    case "domicilario":
-                        siguiente = new Intent(this, Domilciliario.class);
+                    case "Domiciliario":
+                        siguiente = new Intent(this, Domiciliario.class);
                         break;
                 }
 

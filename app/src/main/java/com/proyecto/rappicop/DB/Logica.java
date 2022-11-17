@@ -10,7 +10,7 @@ import androidx.annotation.Nullable;
 import com.proyecto.rappicop.domiciliario.OfertaAceptada;
 import com.proyecto.rappicop.domiciliario.listadirecciones;
 import com.proyecto.rappicop.modelos.CarritoModelo;
-import com.proyecto.rappicop.vendedor.Oferta;
+import com.proyecto.rappicop.modelos.Oferta;
 
 import java.util.ArrayList;
 
@@ -91,12 +91,10 @@ public class Logica extends DatabaseHelper {
         return correct;
     }
 
-    public long aceptarOferta (String oferta, String cliente, String ubicacion, int cantidad, int precio, String estado){
-
+    public long aceptarOferta(String oferta, String cliente, String ubicacion, int cantidad, int precio, String estado) {
         long id = 0;
 
         try {
-
             DatabaseHelper rapidb = new DatabaseHelper(context);
             SQLiteDatabase db = rapidb.getWritableDatabase();
 
@@ -108,8 +106,8 @@ public class Logica extends DatabaseHelper {
             values.put("precio", precio);
             values.put("estado", estado);
 
-            id = db.insert(TABLE_ACEPTADO, null, values);
-        }catch (Exception ex){
+            id = db.insert(rapidb.getTableAceptado(), null, values);
+        } catch (Exception ex) {
             ex.toString();
         }
 
@@ -181,15 +179,13 @@ public class Logica extends DatabaseHelper {
 
         if (cursoroferta.moveToFirst()) {
             // TODO: no se necesita while, ya que usa solo un resultado
-            do {
-                oferta = new Oferta();
-                oferta.setUsuario(cursoroferta.getString(1));
-                oferta.setNombre(cursoroferta.getString(2));
-                oferta.setDescripcion(cursoroferta.getString(6));
-                oferta.setPrecio(cursoroferta.getInt(4));
-                oferta.setUbicacion(cursoroferta.getString(5));
-                oferta.setImagen(cursoroferta.getBlob(7));
-            } while (cursoroferta.moveToNext());
+            oferta = new Oferta();
+            oferta.setUsuario(cursoroferta.getString(1));
+            oferta.setNombre(cursoroferta.getString(2));
+            oferta.setDescripcion(cursoroferta.getString(6));
+            oferta.setPrecio(cursoroferta.getInt(4));
+            oferta.setUbicacion(cursoroferta.getString(5));
+            oferta.setImagen(cursoroferta.getBlob(7));
         }
 
         cursoroferta.close();
@@ -220,23 +216,20 @@ public class Logica extends DatabaseHelper {
 
         return id;
     }
-    public CarritoModelo consultacarro(int id){
 
+    public CarritoModelo consultarCarrito(int id) {
         DatabaseHelper rapidb = new DatabaseHelper(context);
         SQLiteDatabase db = rapidb.getWritableDatabase();
 
         CarritoModelo carro = new CarritoModelo();
-        Cursor cursoroferta = null;
 
-        cursoroferta = db.rawQuery("SELECT * FROM " + TABLE_CARRITO + " WHERE id = '" + id + "'",null);
+        Cursor cursoroferta = db.rawQuery("SELECT * FROM " + rapidb.getTableCarrito() + " WHERE id = '" + id + "'", null);
 
-        if (cursoroferta.moveToFirst()){
-            do {
-                carro.setVendedor(cursoroferta.getString(1));
-                carro.setConsumidor(cursoroferta.getString(2));
-                carro.setProducto(cursoroferta.getString(3));
-                carro.setCantidad(cursoroferta.getInt(4));
-            }   while (cursoroferta.moveToNext());
+        if (cursoroferta.moveToFirst()) {
+            carro.setVendedor(cursoroferta.getString(1));
+            carro.setConsumidor(cursoroferta.getString(2));
+            carro.setProducto(cursoroferta.getString(3));
+            carro.setCantidad(cursoroferta.getInt(4));
         }
 
         cursoroferta.close();
@@ -259,6 +252,7 @@ public class Logica extends DatabaseHelper {
                 carro.setConsumidor(cursoroferta.getString(2));
                 carro.setProducto(cursoroferta.getString(3));
                 carro.setCantidad(cursoroferta.getInt(4));
+
                 listacarrito.add(carro);
             } while (cursoroferta.moveToNext());
         }
@@ -327,68 +321,52 @@ public class Logica extends DatabaseHelper {
 
         return cursorUsuarios.moveToFirst();
     }
-    public boolean eliminarcarrito (String usu, String name){
 
+    public boolean eliminarCarritoCompras(String usu, String name) {
         DatabaseHelper rapidb = new DatabaseHelper(context);
         SQLiteDatabase db = rapidb.getWritableDatabase();
-        boolean correct = false;
-        Cursor cursorUsuarios = null;
 
         try {
-            cursorUsuarios = db.rawQuery("SELECT * FROM " + TABLE_CARRITO + " WHERE cliente LIKE '" + usu + "' AND oferta LIKE '" + name + "'",null);
+            Cursor cursorUsuarios = db.rawQuery("SELECT * FROM " + rapidb.getTableCarrito() + " WHERE cliente LIKE '" + usu + "' AND oferta LIKE '" + name + "'", null);
 
-
-
-            if (cursorUsuarios.moveToFirst()){
-                do {
-                    int ident = cursorUsuarios.getInt(0);
-                    db.execSQL("DELETE FROM " + TABLE_CARRITO + " WHERE id = '" + ident + "'");
-                    return true;
-                }   while (cursorUsuarios.moveToNext());
+            if (cursorUsuarios.moveToFirst()) {
+                int ident = cursorUsuarios.getInt(0);
+                db.execSQL("DELETE FROM " + rapidb.getTableCarrito() + " WHERE id = '" + ident + "'");
+                return true;
             }
 
-        }catch (Exception ex){
+        } catch (Exception ex) {
             ex.toString();
-        }finally {
+        } finally {
             db.close();
         }
 
-        return correct;
+        return false;
     }
 
-
-    public String idbusca(int id){
-
+    public String idbusca(int id) {
         DatabaseHelper rapidb = new DatabaseHelper(context);
         SQLiteDatabase db = rapidb.getWritableDatabase();
-        Cursor cursorUsuarios = null;
 
-
-        cursorUsuarios = db.rawQuery("SELECT * FROM " + TABLE_CARRITO + " WHERE id = '" + id + "'",null);
-
+        Cursor cursorUsuarios = db.rawQuery("SELECT * FROM " + rapidb.getTableCarrito() + " WHERE id = '" + id + "'", null);
         cursorUsuarios.moveToFirst();
-
         return cursorUsuarios.getString(2);
     }
+
     /**
-     * Consutlas
+     * Consultas
      */
-
-    public ArrayList<OfertaAceptada> consultaaceptadas( String usu ){
-
+    public ArrayList<OfertaAceptada> consultaAceptadas(String usu) {
         DatabaseHelper rapidb = new DatabaseHelper(context);
         SQLiteDatabase db = rapidb.getWritableDatabase();
 
         ArrayList<OfertaAceptada> listaofertas = new ArrayList<OfertaAceptada>();
 
-        OfertaAceptada oferta = null;
-        Cursor cursoroferta = null;
+        Cursor cursoroferta = db.rawQuery("SELECT * FROM " + rapidb.getTableAceptado() + " WHERE cliente LIKE '" + usu + "'", null);
 
-        cursoroferta = db.rawQuery("SELECT * FROM " + TABLE_ACEPTADO + " WHERE cliente LIKE '" + usu + "'",null);
-
-        if (cursoroferta.moveToFirst()){
+        if (cursoroferta.moveToFirst()) {
             do {
-                oferta = new OfertaAceptada();
+                OfertaAceptada oferta = new OfertaAceptada();
                 oferta.setId(cursoroferta.getInt(0));
                 oferta.setOferta(cursoroferta.getString(1));
                 oferta.setCliente(cursoroferta.getString(2));
@@ -397,8 +375,9 @@ public class Logica extends DatabaseHelper {
                 oferta.setPrecio(cursoroferta.getInt(5));
                 oferta.setDomiciliario(cursoroferta.getString(6));
                 oferta.setEstado(cursoroferta.getString(7));
+
                 listaofertas.add(oferta);
-            }   while (cursoroferta.moveToNext());
+            } while (cursoroferta.moveToNext());
         }
 
         cursoroferta.close();
@@ -406,25 +385,23 @@ public class Logica extends DatabaseHelper {
         return listaofertas;
     }
 
-    public ArrayList<listadirecciones> consultaubi(String usu){
+    public ArrayList<listadirecciones> consultaUbicacion(String usu) {
 
         DatabaseHelper rapidb = new DatabaseHelper(context);
         SQLiteDatabase db = rapidb.getWritableDatabase();
 
-        listadirecciones listadir = null;
-        Cursor cursoroferta = null;
-
         ArrayList<listadirecciones> lista = new ArrayList<listadirecciones>();
 
-        cursoroferta = db.rawQuery("SELECT * FROM " + TABLE_UBICACIONES + " WHERE usuario LIKE '" + usu + "'",null);
+        Cursor cursoroferta = db.rawQuery("SELECT * FROM " + rapidb.getTableUbicaciones() + " WHERE usuario LIKE '" + usu + "'", null);
 
-        if (cursoroferta.moveToFirst()){
+        if (cursoroferta.moveToFirst()) {
             do {
-                listadir = new listadirecciones();
+                listadirecciones listadir = new listadirecciones();
                 listadir.setNombre(cursoroferta.getString(2));
                 listadir.setDireccion(cursoroferta.getString(3));
+
                 lista.add(listadir);
-            }   while (cursoroferta.moveToNext());
+            } while (cursoroferta.moveToNext());
         }
 
         cursoroferta.close();
@@ -432,7 +409,7 @@ public class Logica extends DatabaseHelper {
         return lista;
     }
 
-    public Oferta consultanombre(String usu){
+    public Oferta consultanombre(String usu) {
 
         DatabaseHelper rapidb = new DatabaseHelper(context);
         SQLiteDatabase db = rapidb.getWritableDatabase();
@@ -440,9 +417,9 @@ public class Logica extends DatabaseHelper {
         Oferta oferta = null;
         Cursor cursoroferta = null;
 
-        cursoroferta = db.rawQuery("SELECT * FROM " + TABLE_OFERTA + " WHERE nombre LIKE '" + usu + "'",null);
+        cursoroferta = db.rawQuery("SELECT * FROM " + rapidb.getTableOferta() + " WHERE nombre LIKE '" + usu + "'", null);
 
-        if (cursoroferta.moveToFirst()){
+        if (cursoroferta.moveToFirst()) {
             do {
                 oferta = new Oferta();
                 oferta.setUsuario(cursoroferta.getString(1));
@@ -451,7 +428,7 @@ public class Logica extends DatabaseHelper {
                 oferta.setPrecio(cursoroferta.getInt(4));
                 oferta.setUbicacion(cursoroferta.getString(5));
                 oferta.setImagen(cursoroferta.getBlob(7));
-            }   while (cursoroferta.moveToNext());
+            } while (cursoroferta.moveToNext());
         }
 
         cursoroferta.close();
@@ -459,21 +436,17 @@ public class Logica extends DatabaseHelper {
         return oferta;
     }
 
-    public ArrayList<OfertaAceptada> consultaespera(){
-
+    public ArrayList<OfertaAceptada> consultaPedidosEspera() {
         DatabaseHelper rapidb = new DatabaseHelper(context);
         SQLiteDatabase db = rapidb.getWritableDatabase();
 
-        ArrayList<OfertaAceptada> listaofertas = new ArrayList<OfertaAceptada>();
+        ArrayList<OfertaAceptada> listaofertas = new ArrayList<>();
 
-        OfertaAceptada oferta = null;
-        Cursor cursoroferta = null;
+        Cursor cursoroferta = db.rawQuery("SELECT * FROM " + rapidb.getTableAceptado() + " WHERE estado LIKE '" + "espera" + "'", null);
 
-        cursoroferta = db.rawQuery("SELECT * FROM " + TABLE_ACEPTADO + " WHERE estado LIKE '" + "espera" + "'",null);
-
-        if (cursoroferta.moveToFirst()){
+        if (cursoroferta.moveToFirst()) {
             do {
-                oferta = new OfertaAceptada();
+                OfertaAceptada oferta = new OfertaAceptada();
                 oferta.setId(cursoroferta.getInt(0));
                 oferta.setOferta(cursoroferta.getString(1));
                 oferta.setCliente(cursoroferta.getString(2));
@@ -482,19 +455,21 @@ public class Logica extends DatabaseHelper {
                 oferta.setPrecio(cursoroferta.getInt(5));
                 oferta.setDomiciliario(cursoroferta.getString(6));
                 oferta.setEstado(cursoroferta.getString(7));
+
                 listaofertas.add(oferta);
-            }   while (cursoroferta.moveToNext());
+            } while (cursoroferta.moveToNext());
         }
 
         cursoroferta.close();
 
         return listaofertas;
     }
+
     /**
      * Ubicación
      */
 
-    public long agregaUbi (String usuario, String nombre, String ubi){
+    public long agregaUbi(String usuario, String nombre, String ubi) {
 
         long id = 0;
 
@@ -508,8 +483,8 @@ public class Logica extends DatabaseHelper {
             values.put("nombre", nombre);
             values.put("direccion", ubi);
 
-            id = db.insert(TABLE_UBICACIONES, null, values);
-        }catch (Exception ex){
+            id = db.insert(rapidb.getTableUbicaciones(), null, values);
+        } catch (Exception ex) {
             ex.toString();
         }
 

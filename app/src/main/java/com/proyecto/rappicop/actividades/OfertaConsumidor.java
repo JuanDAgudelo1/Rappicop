@@ -1,4 +1,4 @@
-package com.proyecto.rappicop.vendedor;
+package com.proyecto.rappicop.actividades;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +11,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.proyecto.rappicop.DB.Logica;
 import com.proyecto.rappicop.R;
 import com.proyecto.rappicop.modelos.Usuario;
+import com.proyecto.rappicop.vendedor.DescripcionOferta;
+import com.proyecto.rappicop.modelos.ListaElementos;
+import com.proyecto.rappicop.modelos.Oferta;
 
 import java.util.ArrayList;
 import java.util.List;

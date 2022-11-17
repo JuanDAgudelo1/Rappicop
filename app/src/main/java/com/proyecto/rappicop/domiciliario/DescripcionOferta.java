@@ -15,7 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.proyecto.rappicop.DB.DatabaseHelper;
 import com.proyecto.rappicop.DB.Logica;
 import com.proyecto.rappicop.R;
-import com.proyecto.rappicop.vendedor.Oferta;
+import com.proyecto.rappicop.modelos.Oferta;
 
 public class DescripcionOferta extends AppCompatActivity {
     public static final String[] EXTRA_MESSAGE = null;

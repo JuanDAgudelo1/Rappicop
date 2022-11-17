@@ -1,4 +1,4 @@
-package com.proyecto.rappicop.vendedor;
+package com.proyecto.rappicop.modelos;
 
 import android.graphics.Bitmap;
 

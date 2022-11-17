@@ -11,8 +11,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.proyecto.rappicop.DB.Logica;
 import com.proyecto.rappicop.R;
-import com.proyecto.rappicop.vendedor.ListaElementos;
-import com.proyecto.rappicop.vendedor.Oferta;
+import com.proyecto.rappicop.modelos.ListaElementos;
+import com.proyecto.rappicop.modelos.Oferta;
 import com.proyecto.rappicop.vendedor.OfertaAdaptador;
 
 import java.util.ArrayList;

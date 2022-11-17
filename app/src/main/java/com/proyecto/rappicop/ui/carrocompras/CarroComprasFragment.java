@@ -18,8 +18,8 @@ import com.proyecto.rappicop.adaptadores.AdaptadorProducto;
 import com.proyecto.rappicop.modelos.CarritoModelo;
 import com.proyecto.rappicop.modelos.ListaCarritoModelo;
 import com.proyecto.rappicop.modelos.Usuario;
-import com.proyecto.rappicop.vendedor.Oferta;
-import com.proyecto.rappicop.vendedor.OfertaConsumidor;
+import com.proyecto.rappicop.modelos.Oferta;
+import com.proyecto.rappicop.actividades.OfertaConsumidor;
 
 import java.util.ArrayList;
 import java.util.List;

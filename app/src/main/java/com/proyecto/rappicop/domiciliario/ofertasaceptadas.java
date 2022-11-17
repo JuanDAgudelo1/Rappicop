@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.proyecto.rappicop.DB.DatabaseHelper;
 import com.proyecto.rappicop.DB.Logica;
 import com.proyecto.rappicop.R;
-import com.proyecto.rappicop.vendedor.Oferta;
+import com.proyecto.rappicop.modelos.Oferta;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +39,7 @@ public class ofertasaceptadas extends AppCompatActivity {
         usuario = intent.getStringExtra(EXTRA_MESSAGE);
         listaofertas = new ArrayList<OfertaAceptada>();
 
-        listaofertas = iu.consultaaceptadas(usuario);
+        listaofertas = iu.consultaAceptadas(usuario);
         init();
 
         adaptadorLista.setOnClickListener(new View.OnClickListener() {

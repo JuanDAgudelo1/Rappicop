@@ -12,7 +12,7 @@ import com.proyecto.rappicop.R;
 
 import java.util.List;
 
-public class AdaptadorDirecciones extends RecyclerView.Adapter<AdaptadorDirecciones.ViewHolder> implements View.OnClickListener{
+public class AdaptadorDirecciones extends RecyclerView.Adapter<AdaptadorDirecciones.ViewHolder> implements View.OnClickListener {
     private View.OnClickListener listener;
     private List<listadirecciones> mData;
     private LayoutInflater mInflater;
@@ -20,7 +20,7 @@ public class AdaptadorDirecciones extends RecyclerView.Adapter<AdaptadorDireccio
     private String user;
 
 
-    public AdaptadorDirecciones(List<listadirecciones> itemList, Context context, String user){
+    public AdaptadorDirecciones(List<listadirecciones> itemList, Context context, String user) {
         this.mInflater = LayoutInflater.from(context);
         this.context = context;
         this.mData = itemList;
@@ -28,7 +28,9 @@ public class AdaptadorDirecciones extends RecyclerView.Adapter<AdaptadorDireccio
     }
 
     @Override
-    public int getItemCount() {return mData.size(); }
+    public int getItemCount() {
+        return mData.size();
+    }
 
     @Override
     public AdaptadorDirecciones.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -39,20 +41,22 @@ public class AdaptadorDirecciones extends RecyclerView.Adapter<AdaptadorDireccio
 
 
     @Override
-    public void onBindViewHolder(final AdaptadorDirecciones.ViewHolder holder, final int position){
+    public void onBindViewHolder(final AdaptadorDirecciones.ViewHolder holder, final int position) {
         holder.bindData(mData.get(position));
     }
 
-    public void setItems(List<listadirecciones> items) {mData = items; }
+    public void setItems(List<listadirecciones> items) {
+        mData = items;
+    }
 
-    public void setOnClickListener(View.OnClickListener listener){
+    public void setOnClickListener(View.OnClickListener listener) {
         this.listener = listener;
     }
 
     @Override
     public void onClick(View view) {
 
-        if(listener != null){
+        if (listener != null) {
             listener.onClick(view);
         }
 
@@ -61,13 +65,14 @@ public class AdaptadorDirecciones extends RecyclerView.Adapter<AdaptadorDireccio
     class ViewHolder extends RecyclerView.ViewHolder {
         TextView nombre, direccion;
 
-        ViewHolder(View itemView){
+        ViewHolder(View itemView) {
             super(itemView);
 
             nombre = itemView.findViewById(R.id.nombreubi);
             direccion = itemView.findViewById(R.id.descripciondireccion);
 
         }
+
         void bindData(final listadirecciones item) {
 
             nombre.setText(item.getNombre());

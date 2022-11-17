@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.proyecto.rappicop.DB.Logica;
 import com.proyecto.rappicop.R;
+import com.proyecto.rappicop.modelos.ListaElementos;
 
 import java.util.List;
 import java.util.Objects;
@@ -110,9 +111,9 @@ public class OfertaAdaptador extends RecyclerView.Adapter<OfertaAdaptador.ViewHo
                             })
                             .setNegativeButton("No", (dialogInterface, i) -> dialogInterface.cancel());
 
-                    AlertDialog titulo = alerta.create();
-                    titulo.setTitle("Eliminar");
-                    titulo.show();
+                    AlertDialog alertDialog = alerta.create();
+                    alertDialog.setTitle("Eliminar");
+                    alertDialog.show();
                 });
             }
         }
