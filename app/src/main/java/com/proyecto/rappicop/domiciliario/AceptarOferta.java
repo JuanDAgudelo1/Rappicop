@@ -13,10 +13,13 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.proyecto.rappicop.DB.Logica;
+import com.proyecto.rappicop.MainActivity;
 import com.proyecto.rappicop.R;
-import com.proyecto.rappicop.modelos.CarritoModelo;
-import com.proyecto.rappicop.ui.home.HomeFragment;
+import com.proyecto.rappicop.modelos.Direccion;
+import com.proyecto.rappicop.modelos.ListaCarritoModelo;
 import com.proyecto.rappicop.modelos.Oferta;
+import com.proyecto.rappicop.modelos.Usuario;
+import com.proyecto.rappicop.ui.home.HomeFragment;
 
 public class AceptarOferta extends AppCompatActivity {
 
@@ -27,16 +30,6 @@ public class AceptarOferta extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_aceptar_oferta);
 
-        Logica iu = new Logica(AceptarOferta.this);
-        Intent intent = getIntent();
-
-        String[] dato = intent.getStringArrayExtra(String.valueOf(EXTRA_MESSAGE));
-        String ubicacion = dato[0];
-        String idcarro = dato[1];
-
-        CarritoModelo carro = iu.consultarCarrito(Integer.parseInt(idcarro));
-        Oferta oferta = iu.consultanombre(carro.getProducto());
-
         TextView name = findViewById(R.id.ubi);
         TextView cantidad = findViewById(R.id.cant);
         TextView ubi = findViewById(R.id.description);
@@ -45,31 +38,40 @@ public class AceptarOferta extends AppCompatActivity {
         ImageView img = findViewById(R.id.picture);
         Button aceptar = findViewById(R.id.eliminarbtn);
 
-        name.setText(carro.getProducto());
-        ubi.setText("Dirección de entrega: " + ubicacion);
-        cantidad.setText("Cantidad: " + carro.getCantidad());
-        fijo.setText("Precio Uni: " + oferta.getPrecio());
-        total.setText("Precio Total: " + (oferta.getPrecio() * carro.getCantidad()));
+        Logica iu = new Logica(AceptarOferta.this);
+        Intent intent = getIntent();
 
-        Bitmap bim = BitmapFactory.decodeByteArray(oferta.getImagen(), 0, oferta.getImagen().length);
-        img.setImageBitmap(bim);
+        Usuario user = (Usuario) intent.getSerializableExtra("user");
+        Direccion direccion = (Direccion) intent.getSerializableExtra("direccion");
+        ListaCarritoModelo carritoModelo = (ListaCarritoModelo) intent.getSerializableExtra("carro");
+
+        Oferta oferta = iu.consultanombre(carritoModelo.getnproducto());
+
+        name.setText(carritoModelo.getnproducto());
+        ubi.setText("Dirección de entrega: " + direccion.getDireccion());
+        cantidad.setText("Cantidad: " + carritoModelo.getCantidad());
+        fijo.setText("Precio Uni: " + oferta.getPrecio());
+        total.setText("Precio Total: " + (oferta.getPrecio() * Integer.parseInt(carritoModelo.getCantidad())));
+
+//        Bitmap bim = BitmapFactory.decodeByteArray(oferta.getImagen(), 0, oferta.getImagen().length);
+//        img.setImageBitmap(bim);
 
         aceptar.setOnClickListener(view -> {
-            Intent init = new Intent(AceptarOferta.this, HomeFragment.class);
+            Intent init = new Intent(AceptarOferta.this, MainActivity.class);
 
             AlertDialog.Builder alerta = new AlertDialog.Builder(AceptarOferta.this);
             alerta.setMessage("¿Esta seguro de esta compra?")
                     .setCancelable(false)
                     .setPositiveButton("Si", (dialogInterface, i) -> {
-                        long id = iu.aceptarOferta(carro.getProducto(), carro.getConsumidor(), ubicacion, carro.getCantidad(), (oferta.getPrecio() * carro.getCantidad()), "espera");
+                        long id = iu.aceptarOferta(carritoModelo.getnproducto(), carritoModelo.getConsumidor(), direccion.getDireccion(), Integer.parseInt(carritoModelo.getCantidad()), (oferta.getPrecio() * Integer.parseInt(carritoModelo.getCantidad())), "espera");
 
                         if (id > 0) {
                             Toast.makeText(AceptarOferta.this, "Oferta aceptada", Toast.LENGTH_SHORT).show();
-                            if (iu.eliminarCarritoCompras(carro.getConsumidor(), carro.getProducto())) {
+                            if (iu.eliminarCarritoCompras(carritoModelo.getConsumidor(), carritoModelo.getnproducto())) {
                                 Toast.makeText(AceptarOferta.this, "Carrito eliminado", Toast.LENGTH_SHORT).show();
                             }
 
-                            init.putExtra(HomeFragment.EXTRA_MESSAGE, carro.getConsumidor());
+                            init.putExtra("user", user);
                             startActivity(init);
                             finish();
                         } else {

@@ -1,6 +1,7 @@
 package com.proyecto.rappicop.adaptadores;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,7 +15,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.proyecto.rappicop.DB.Logica;
 import com.proyecto.rappicop.R;
+import com.proyecto.rappicop.domiciliario.ListaDireccion;
 import com.proyecto.rappicop.modelos.ListaCarritoModelo;
+import com.proyecto.rappicop.modelos.Usuario;
 
 import java.util.List;
 import java.util.Objects;
@@ -24,11 +27,13 @@ public class AdaptadorProducto extends RecyclerView.Adapter<AdaptadorProducto.Vi
     private final List<ListaCarritoModelo> mData;
     private final LayoutInflater mInflater;
     private final Context context;
+    private final Usuario usuario;
 
-    public AdaptadorProducto(List<ListaCarritoModelo> itemList, Context context) {
+    public AdaptadorProducto(List<ListaCarritoModelo> itemList, Context context, Usuario usuario) {
         this.mInflater = LayoutInflater.from(context);
         this.context = context;
         this.mData = itemList;
+        this.usuario = usuario;
     }
 
     @Override
@@ -50,7 +55,7 @@ public class AdaptadorProducto extends RecyclerView.Adapter<AdaptadorProducto.Vi
     class ViewHolder extends RecyclerView.ViewHolder {
         ImageView Icono;
         TextView nproducto, precio, descripcion, cantidad;
-        Button mas, menos;
+        Button mas, menos, btnComprar;
 
         ViewHolder(View itemView) {
             super(itemView);
@@ -61,6 +66,7 @@ public class AdaptadorProducto extends RecyclerView.Adapter<AdaptadorProducto.Vi
             cantidad = itemView.findViewById(R.id.contadorproducto);
             mas = itemView.findViewById(R.id.Buttonplus);
             menos = itemView.findViewById(R.id.Buttonminus);
+            btnComprar = itemView.findViewById(R.id.btnComprarCarroCompras);
         }
 
         void bindData(final ListaCarritoModelo item) {
@@ -71,6 +77,13 @@ public class AdaptadorProducto extends RecyclerView.Adapter<AdaptadorProducto.Vi
             cantidad.setText(item.getCantidad());
 
             Logica iu = new Logica(context);
+
+            btnComprar.setOnClickListener(view -> {
+                Intent i = new Intent(context, ListaDireccion.class);
+                i.putExtra("user", usuario);
+                i.putExtra("producto", item);
+                context.startActivity(i);
+            });
 
             mas.setOnClickListener(view -> {
                 if (iu.verificarCarrito(item.getConsumidor(), item.getVendedor(), item.getnproducto())) {
@@ -102,7 +115,6 @@ public class AdaptadorProducto extends RecyclerView.Adapter<AdaptadorProducto.Vi
                 }
             });
         }
-
     }
 }
 

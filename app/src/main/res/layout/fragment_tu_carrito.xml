@@ -7,77 +7,85 @@
     android:background="@color/white"
     tools:context=".ui.carrocompras.CarroComprasFragment">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/listadeproductos"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_margin="5dp"
-        android:padding="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4"
-        app:layout_constraintVertical_bias="0.0"
-        tools:ignore="MissingConstraints" />
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/textView12"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="Carrito de compras"
-        android:textColor="@color/purple_500"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Carrito de compras"
+            android:textColor="@color/purple_500"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="80dp"
-        android:layout_height="74dp"
-        android:layout_marginTop="12dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView12"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/ic_baseline_shopping_cart_24"
-        tools:ignore="MissingConstraints" />
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="80dp"
+            android:layout_height="74dp"
+            android:layout_marginTop="12dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView12"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/ic_baseline_shopping_cart_24"
+            tools:ignore="MissingConstraints" />
 
-    <TextView
-        android:id="@+id/mensajecarrito"
-        android:layout_width="340dp"
-        android:layout_height="52dp"
-        android:layout_marginTop="10dp"
-        android:text="En este momento no tienes ningun producto en el carrito..."
-        android:textAlignment="center"
-        android:textColor="#887B7B"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4"
-        app:layout_constraintVertical_bias="0.0"
-        tools:ignore="MissingConstraints" />
+        <LinearLayout
+            android:id="@+id/layoutCarroComprasConProductos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
 
-    <Button
-        android:id="@+id/iroferta"
-        android:layout_width="148dp"
-        android:layout_height="53dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/boton_diseno"
-        android:text="Ir a ofertas"
-        android:textStyle="bold"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mensajecarrito"
-        app:layout_constraintVertical_bias="0.0"
-        tools:ignore="MissingConstraints" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/listadeproductos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:padding="10dp" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/layoutCarroComprasSinProductos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/mensajecarrito"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="10dp"
+                android:paddingHorizontal="12dp"
+                android:text="En este momento no tienes ningun producto en el carrito..."
+                android:textAlignment="center"
+                android:textColor="#887B7B"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/iroferta"
+                android:layout_width="148dp"
+                android:layout_height="53dp"
+                android:layout_marginTop="10dp"
+                android:text="Ir a ofertas"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

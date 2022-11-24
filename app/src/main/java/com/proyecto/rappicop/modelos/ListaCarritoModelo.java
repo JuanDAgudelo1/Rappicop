@@ -2,7 +2,9 @@ package com.proyecto.rappicop.modelos;
 
 import android.graphics.Bitmap;
 
-public class ListaCarritoModelo {
+import java.io.Serializable;
+
+public class ListaCarritoModelo implements Serializable {
 
     private Bitmap img;
     public String nproducto;

@@ -1,6 +1,8 @@
 package com.proyecto.rappicop.modelos;
 
-public class CarritoModelo {
+import java.io.Serializable;
+
+public class CarritoModelo implements Serializable {
 
     private String vendedor;
     private String consumidor;

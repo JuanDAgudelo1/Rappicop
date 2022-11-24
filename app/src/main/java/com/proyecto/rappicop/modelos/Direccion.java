@@ -1,6 +1,8 @@
 package com.proyecto.rappicop.modelos;
 
-public class Direccion {
+import java.io.Serializable;
+
+public class Direccion implements Serializable {
 
     public String nombre;
     public String direccion;
