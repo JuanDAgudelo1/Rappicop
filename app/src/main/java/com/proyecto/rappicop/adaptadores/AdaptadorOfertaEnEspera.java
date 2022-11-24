@@ -7,32 +7,32 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.proyecto.rappicop.DB.Logica;
 import com.proyecto.rappicop.R;
-import com.proyecto.rappicop.modelos.ListaElementos;
+import com.proyecto.rappicop.modelos.OfertaAceptada;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class AdaptadorOfertaEnEspera extends RecyclerView.Adapter<AdaptadorOfertaEnEspera.ViewHolder> implements View.OnClickListener {
 
     private View.OnClickListener listener;
-    private List<ListaElementos> mData;
-    private LayoutInflater mInflater;
+    private final ArrayList<OfertaAceptada> listaOfertas;
+    private final LayoutInflater mInflater;
     private Context context;
-    private String user;
 
-    public AdaptadorOfertaEnEspera(List<ListaElementos> itemList, Context context, String user) {
+    public AdaptadorOfertaEnEspera(ArrayList<OfertaAceptada> listaOfertas, Context context, String user) {
         this.mInflater = LayoutInflater.from(context);
+        this.listaOfertas = listaOfertas;
         this.context = context;
-        this.mData = itemList;
-        this.user = user;
     }
 
     @Override
     public int getItemCount() {
-        return mData.size();
+        return listaOfertas.size();
     }
 
     @Override
@@ -44,11 +44,7 @@ public class AdaptadorOfertaEnEspera extends RecyclerView.Adapter<AdaptadorOfert
 
     @Override
     public void onBindViewHolder(final AdaptadorOfertaEnEspera.ViewHolder holder, final int position) {
-        holder.bindData(mData.get(position));
-    }
-
-    public void setItems(List<ListaElementos> items) {
-        mData = items;
+        holder.bindData(listaOfertas.get(position));
     }
 
     public void setOnClickListener(View.OnClickListener listener) {
@@ -63,23 +59,34 @@ public class AdaptadorOfertaEnEspera extends RecyclerView.Adapter<AdaptadorOfert
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
-
         ImageView Icono;
         TextView nombrerestaurante, horario;
-        Button estadorestaurante;
+        Button btnAceptarOfertaEnEspera;
 
         ViewHolder(View itemView) {
             super(itemView);
             Icono = itemView.findViewById(R.id.Icono);
             nombrerestaurante = itemView.findViewById(R.id.nombreubi);
             horario = itemView.findViewById(R.id.textohorario);
-            estadorestaurante = itemView.findViewById(R.id.estadorestaurante);
+            btnAceptarOfertaEnEspera = itemView.findViewById(R.id.btnAceptarOfertaEnEspera);
         }
 
-        void bindData(final ListaElementos item) {
-            Icono.setImageBitmap(item.getImg());
-            nombrerestaurante.setText(item.getNombrerestaurante());
-            horario.setText(item.getHorario());
+        void bindData(final OfertaAceptada item) {
+//            Icono.setImageBitmap(item.getImg());
+            nombrerestaurante.setText(item.getOferta());
+            horario.setText(item.getUbicacion());
+            Logica iu = new Logica(context);
+
+            btnAceptarOfertaEnEspera.setOnClickListener(click -> {
+                boolean estadoModificado = iu.modificarEstadoOfertaAceptada(item.getId(), "aceptada");
+                Toast.makeText(context, estadoModificado ? "Oferta aceptada" : "Oferta no aceptada", Toast.LENGTH_SHORT).show();
+
+                if (estadoModificado) {
+                    listaOfertas.remove(getAdapterPosition());
+                    notifyItemRemoved(getAdapterPosition());
+                    notifyItemRangeChanged(getAdapterPosition(), listaOfertas.size());
+                }
+            });
         }
     }
 }

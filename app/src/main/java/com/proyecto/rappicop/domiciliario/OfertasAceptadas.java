@@ -43,8 +43,8 @@ public class OfertasAceptadas extends AppCompatActivity {
 
         for (OfertaAceptada x : listaOfertas) {
             Oferta oferta = iu.consultanombre(x.getOferta());
-            Bitmap bim = BitmapFactory.decodeByteArray(oferta.getImagen(), 0, oferta.getImagen().length);
-            elements.add(new ListaElementos(bim, x.getOferta(), x.getUbicacion(), x.getEstado(), user.getUsuario()));
+//            Bitmap bim = BitmapFactory.decodeByteArray(oferta.getImagen(), 0, oferta.getImagen().length);
+            elements.add(new ListaElementos(null, x.getOferta(), x.getUbicacion(), x.getEstado(), user.getUsuario()));
         }
 
         AdaptadorOfertaAceptada adaptadorLista = new AdaptadorOfertaAceptada(elements, this, user.getUsuario());

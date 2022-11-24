@@ -104,6 +104,7 @@ public class Logica extends DatabaseHelper {
             values.put("ubicacion", ubicacion);
             values.put("cantidad", cantidad);
             values.put("precio", precio);
+            values.put("domiciliario", "");
             values.put("estado", estado);
 
             id = db.insert(rapidb.getTableAceptado(), null, values);
@@ -112,6 +113,25 @@ public class Logica extends DatabaseHelper {
         }
 
         return id;
+    }
+
+    public boolean modificarEstadoOfertaAceptada(int id, String nuevoEstado) {
+        boolean correct = false;
+
+        DatabaseHelper rapidb = new DatabaseHelper(context);
+
+        try (SQLiteDatabase db = rapidb.getWritableDatabase()) {
+            Cursor cursorUsuarios = db.rawQuery("SELECT * FROM " + getTableAceptado() + " WHERE id =" + id, null);
+
+            if (cursorUsuarios.moveToFirst()) {
+                db.execSQL("UPDATE " + getTableAceptado() + " SET estado = '" + nuevoEstado + "' WHERE id =" + id);
+                correct = true;
+            }
+        } catch (Exception ex) {
+            ex.toString();
+        }
+
+        return correct;
     }
 
     /**
@@ -466,9 +486,7 @@ public class Logica extends DatabaseHelper {
     /**
      * Ubicación
      */
-
     public long agregaUbi(String usuario, String nombre, String ubi) {
-
         long id = 0;
 
         try {

@@ -17,9 +17,6 @@
             android:name=".actividades.DescripcionPedido"
             android:exported="false" />
         <activity
-            android:name=".domiciliario.ItemPedidosEnEspera"
-            android:exported="false" />
-        <activity
             android:name=".domiciliario.AceptarOferta"
             android:exported="false" />
         <activity

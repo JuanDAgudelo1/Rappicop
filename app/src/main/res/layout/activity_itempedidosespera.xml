@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:animateLayoutChanges="true"
     android:background="#F9F2ED"
     android:elevation="4dp"
     app:cardCornerRadius="20dp"
-    app:cardUseCompatPadding="true"
-    tools:context=".domiciliario.ItemPedidosEnEspera">
+    app:cardUseCompatPadding="true">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -64,8 +62,8 @@
             </LinearLayout>
 
             <Button
-                android:id="@+id/estadorestaurante"
-                android:layout_width="66dp"
+                android:id="@+id/btnAceptarOfertaEnEspera"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="13dp"
                 android:layout_marginTop="12dp"
