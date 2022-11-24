@@ -1,6 +1,7 @@
 package com.proyecto.rappicop.adaptadores;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import android.widget.Toast;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.proyecto.rappicop.DB.Logica;
+import com.proyecto.rappicop.NotificationService;
 import com.proyecto.rappicop.R;
 import com.proyecto.rappicop.modelos.OfertaAceptada;
 
@@ -85,6 +87,11 @@ public class AdaptadorOfertaEnEspera extends RecyclerView.Adapter<AdaptadorOfert
                     listaOfertas.remove(getAdapterPosition());
                     notifyItemRemoved(getAdapterPosition());
                     notifyItemRangeChanged(getAdapterPosition(), listaOfertas.size());
+
+                    Intent notification = new Intent(context, NotificationService.class);
+                    notification.putExtra("title", "Oferta aceptada");
+                    notification.putExtra("content", "Oferta de {" + item.getCliente() + "} fue aceptada exitosamente");
+                    context.startService(notification);
                 }
             });
         }

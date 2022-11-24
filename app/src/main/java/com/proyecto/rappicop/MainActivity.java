@@ -1,8 +1,10 @@
 package com.proyecto.rappicop;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,6 +15,7 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.navigation.NavigationView;
+import com.proyecto.rappicop.actividades.Bienvenido;
 import com.proyecto.rappicop.databinding.ActivityMainBinding;
 import com.proyecto.rappicop.modelos.Usuario;
 
@@ -36,6 +39,13 @@ public class MainActivity extends AppCompatActivity {
         TextView txtNavNombre = headerView.findViewById(R.id.navNombre);
         TextView txtNavCorreo = headerView.findViewById(R.id.navCorreo);
 
+        Button btnCerrarSesion = findViewById(R.id.btnCerrarSesion);
+        btnCerrarSesion.setOnClickListener(click -> {
+            Intent intent = new Intent(this, Bienvenido.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+        });
+
         Usuario user = (Usuario) getIntent().getSerializableExtra("user");
         txtNavNombre.setText(user.getNombre());
         txtNavCorreo.setText(user.getCorreo());
@@ -46,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
                 R.id.nav_home, R.id.nav_comida_diaria, R.id.nav_favorito, R.id.nav_tu_carrito)
                 .setOpenableLayout(drawer)
                 .build();
+
 
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
