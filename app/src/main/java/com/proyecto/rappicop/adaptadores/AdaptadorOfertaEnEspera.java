@@ -16,6 +16,7 @@ import com.proyecto.rappicop.DB.Logica;
 import com.proyecto.rappicop.NotificationService;
 import com.proyecto.rappicop.R;
 import com.proyecto.rappicop.modelos.OfertaAceptada;
+import com.proyecto.rappicop.modelos.Usuario;
 
 import java.util.ArrayList;
 
@@ -25,11 +26,13 @@ public class AdaptadorOfertaEnEspera extends RecyclerView.Adapter<AdaptadorOfert
     private final ArrayList<OfertaAceptada> listaOfertas;
     private final LayoutInflater mInflater;
     private Context context;
+    private Usuario usuario;
 
-    public AdaptadorOfertaEnEspera(ArrayList<OfertaAceptada> listaOfertas, Context context, String user) {
+    public AdaptadorOfertaEnEspera(ArrayList<OfertaAceptada> listaOfertas, Context context, Usuario usuario) {
         this.mInflater = LayoutInflater.from(context);
         this.listaOfertas = listaOfertas;
         this.context = context;
+        this.usuario = usuario;
     }
 
     @Override
@@ -80,7 +83,7 @@ public class AdaptadorOfertaEnEspera extends RecyclerView.Adapter<AdaptadorOfert
             Logica iu = new Logica(context);
 
             btnAceptarOfertaEnEspera.setOnClickListener(click -> {
-                boolean estadoModificado = iu.modificarEstadoOfertaAceptada(item.getId(), "aceptada");
+                boolean estadoModificado = iu.modificarEstadoOfertaAceptada(item.getId(), "aceptada", usuario.getUsuario());
                 Toast.makeText(context, estadoModificado ? "Oferta aceptada" : "Oferta no aceptada", Toast.LENGTH_SHORT).show();
 
                 if (estadoModificado) {

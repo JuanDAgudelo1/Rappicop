@@ -10,28 +10,29 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.proyecto.rappicop.R;
-import com.proyecto.rappicop.modelos.ListaElementos;
+import com.proyecto.rappicop.modelos.OfertaAceptada;
+import com.proyecto.rappicop.modelos.Usuario;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class AdaptadorOfertaAceptada extends RecyclerView.Adapter<AdaptadorOfertaAceptada.ViewHolder> implements View.OnClickListener {
 
     private View.OnClickListener listener;
-    private List<ListaElementos> mData;
-    private LayoutInflater mInflater;
-    private Context context;
-    private String user;
+    private final ArrayList<OfertaAceptada> listaOfertas;
+    private final LayoutInflater mInflater;
+    private final Context context;
+    private final Usuario usuario;
 
-    public AdaptadorOfertaAceptada(List<ListaElementos> itemList, Context context, String user) {
+    public AdaptadorOfertaAceptada(ArrayList<OfertaAceptada> listaOfertas, Context context, Usuario usuario) {
         this.mInflater = LayoutInflater.from(context);
+        this.listaOfertas = listaOfertas;
         this.context = context;
-        this.mData = itemList;
-        this.user = user;
+        this.usuario = usuario;
     }
 
     @Override
     public int getItemCount() {
-        return mData.size();
+        return listaOfertas.size();
     }
 
     @Override
@@ -43,11 +44,7 @@ public class AdaptadorOfertaAceptada extends RecyclerView.Adapter<AdaptadorOfert
 
     @Override
     public void onBindViewHolder(final AdaptadorOfertaAceptada.ViewHolder holder, final int position) {
-        holder.bindData(mData.get(position));
-    }
-
-    public void setItems(List<ListaElementos> items) {
-        mData = items;
+        holder.bindData(listaOfertas.get(position));
     }
 
     public void setOnClickListener(View.OnClickListener listener) {
@@ -63,22 +60,21 @@ public class AdaptadorOfertaAceptada extends RecyclerView.Adapter<AdaptadorOfert
 
     class ViewHolder extends RecyclerView.ViewHolder {
         ImageView Icono;
-        TextView nombrerestaurante, horario, estadorestaurante;
+        TextView nombrerestaurante, horario, estadoOferta;
 
         ViewHolder(View itemView) {
             super(itemView);
             Icono = itemView.findViewById(R.id.Icono);
-            nombrerestaurante = itemView.findViewById(R.id.nombreubi);
+            nombrerestaurante = itemView.findViewById(R.id.nombrerestaurante);
             horario = itemView.findViewById(R.id.textohorario);
-            estadorestaurante = itemView.findViewById(R.id.estadorestaurante);
+            estadoOferta = itemView.findViewById(R.id.estadoOferta);
         }
 
-        void bindData(final ListaElementos item) {
-            Icono.setImageBitmap(item.getImg());
-            nombrerestaurante.setText(item.getNombrerestaurante());
-            horario.setText(item.getHorario());
-            estadorestaurante.setText(item.getEstado());
+        void bindData(final OfertaAceptada item) {
+//            Icono.setImageBitmap(item.getImg());
+            nombrerestaurante.setText(item.getOferta());
+            horario.setText(item.getUbicacion());
+            estadoOferta.setText(item.getEstado());
         }
     }
 }
-

@@ -115,7 +115,7 @@ public class Logica extends DatabaseHelper {
         return id;
     }
 
-    public boolean modificarEstadoOfertaAceptada(int id, String nuevoEstado) {
+    public boolean modificarEstadoOfertaAceptada(int id, String nuevoEstado, String domicilario) {
         boolean correct = false;
 
         DatabaseHelper rapidb = new DatabaseHelper(context);
@@ -124,7 +124,7 @@ public class Logica extends DatabaseHelper {
             Cursor cursorUsuarios = db.rawQuery("SELECT * FROM " + getTableAceptado() + " WHERE id =" + id, null);
 
             if (cursorUsuarios.moveToFirst()) {
-                db.execSQL("UPDATE " + getTableAceptado() + " SET estado = '" + nuevoEstado + "' WHERE id =" + id);
+                db.execSQL("UPDATE " + getTableAceptado() + " SET estado = '" + nuevoEstado + "', domiciliario = '" + domicilario + "' WHERE id =" + id);
                 correct = true;
             }
         } catch (Exception ex) {
@@ -461,6 +461,35 @@ public class Logica extends DatabaseHelper {
         ArrayList<OfertaAceptada> listaofertas = new ArrayList<>();
 
         Cursor cursoroferta = db.rawQuery("SELECT * FROM " + rapidb.getTableAceptado() + " WHERE estado LIKE '" + "espera" + "'", null);
+
+        if (cursoroferta.moveToFirst()) {
+            do {
+                OfertaAceptada oferta = new OfertaAceptada();
+                oferta.setId(cursoroferta.getInt(0));
+                oferta.setOferta(cursoroferta.getString(1));
+                oferta.setCliente(cursoroferta.getString(2));
+                oferta.setUbicacion(cursoroferta.getString(3));
+                oferta.setCantidad(cursoroferta.getInt(4));
+                oferta.setPrecio(cursoroferta.getInt(5));
+                oferta.setDomiciliario(cursoroferta.getString(6));
+                oferta.setEstado(cursoroferta.getString(7));
+
+                listaofertas.add(oferta);
+            } while (cursoroferta.moveToNext());
+        }
+
+        cursoroferta.close();
+
+        return listaofertas;
+    }
+
+    public ArrayList<OfertaAceptada> consultaPedidosPorDomicilario(String domiciliario) {
+        DatabaseHelper rapidb = new DatabaseHelper(context);
+        SQLiteDatabase db = rapidb.getWritableDatabase();
+
+        ArrayList<OfertaAceptada> listaofertas = new ArrayList<>();
+
+        Cursor cursoroferta = db.rawQuery("SELECT * FROM " + rapidb.getTableAceptado() + " WHERE domiciliario = '" + domiciliario + "'", null);
 
         if (cursoroferta.moveToFirst()) {
             do {

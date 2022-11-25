@@ -47,12 +47,12 @@ public class OfertasAceptadas extends AppCompatActivity {
             elements.add(new ListaElementos(null, x.getOferta(), x.getUbicacion(), x.getEstado(), user.getUsuario()));
         }
 
-        AdaptadorOfertaAceptada adaptadorLista = new AdaptadorOfertaAceptada(elements, this, user.getUsuario());
-
-        RecyclerView recyclerView = findViewById(R.id.lista);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(adaptadorLista);
+//        AdaptadorOfertaAceptada adaptadorLista = new AdaptadorOfertaAceptada(elements, this, user.getUsuario());
+//
+//        RecyclerView recyclerView = findViewById(R.id.lista);
+//        recyclerView.setHasFixedSize(true);
+//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+//        recyclerView.setAdapter(adaptadorLista);
     }
 
 }

@@ -71,7 +71,7 @@ public class ListaAdaptador extends RecyclerView.Adapter<ListaAdaptador.ViewHold
             Icono = itemView.findViewById(R.id.Icono);
             nombrerestaurante = itemView.findViewById(R.id.nombrerestaurante);
             horario = itemView.findViewById(R.id.textohorario);
-            estadorestaurante = itemView.findViewById(R.id.estadorestaurante);
+            estadorestaurante = itemView.findViewById(R.id.estadoOferta);
         }
 
         void bindData(final ListaElementos item) {

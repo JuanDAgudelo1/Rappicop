@@ -17,12 +17,19 @@ public class Domiciliario extends AppCompatActivity {
         setContentView(R.layout.activity_domiciliario);
 
         Button btnPedidosEnEspera = findViewById(R.id.btnPedidosEnEspera);
+        Button btnReportarEstado = findViewById(R.id.btnReportarEstado);
 
         Intent intent = getIntent();
         Usuario user = (Usuario) intent.getSerializableExtra("user");
 
         btnPedidosEnEspera.setOnClickListener(view -> {
             Intent i = new Intent(Domiciliario.this, PedidosEnEspera.class);
+            i.putExtra("user", user);
+            startActivity(i);
+        });
+
+        btnReportarEstado.setOnClickListener(view -> {
+            Intent i = new Intent(Domiciliario.this, PedidosPorDomiciliario.class);
             i.putExtra("user", user);
             startActivity(i);
         });

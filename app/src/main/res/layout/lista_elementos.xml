@@ -62,21 +62,21 @@
                     android:textSize="18sp" />
             </LinearLayout>
 
-            <Button
-                android:id="@+id/estadorestaurante"
+            <TextView
+                android:id="@+id/estadoOferta"
                 android:layout_width="66dp"
-                android:layout_height="wrap_content"
+                android:layout_height="30dp"
                 android:layout_marginStart="13dp"
                 android:layout_marginTop="12dp"
                 android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
                 android:layout_marginBottom="8dp"
                 android:layout_toEndOf="@+id/linearLayout"
                 android:background="@drawable/boton_diseno"
                 android:backgroundTint="#FFB562"
-                android:text="Agregar"
+                android:gravity="center"
+                android:text=""
                 android:textAlignment="center"
-                android:textSize="6dp"
+                android:textSize="12dp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
