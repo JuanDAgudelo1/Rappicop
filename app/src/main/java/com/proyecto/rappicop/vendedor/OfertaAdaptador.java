@@ -24,7 +24,7 @@ import java.util.Objects;
 public class OfertaAdaptador extends RecyclerView.Adapter<OfertaAdaptador.ViewHolder> implements View.OnClickListener {
 
     private View.OnClickListener listener;
-    private final List<ListaElementos> mData;
+    private List<ListaElementos> mData;
     private final LayoutInflater mInflater;
     private final Context context;
     private final boolean eliminarOferta;
@@ -34,6 +34,11 @@ public class OfertaAdaptador extends RecyclerView.Adapter<OfertaAdaptador.ViewHo
         this.context = context;
         this.mData = itemList;
         this.eliminarOferta = eliminarOferta;
+    }
+
+    public void setFiltradoProductos(List<ListaElementos> nuevoData) {
+        this.mData = nuevoData;
+        notifyDataSetChanged();
     }
 
     @Override

@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TableLayout;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -28,13 +27,13 @@ public class FavoritoFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        View root = inflater.inflate(R.layout.fragment_favorito,container, false);
+        View root = inflater.inflate(R.layout.fragment_favorito, container, false);
 
         tabLayout = root.findViewById(R.id.tab_layout);
         viewPager2 = root.findViewById(R.id.view_pager2);
 
         FragmentManager fm = getActivity().getSupportFragmentManager();
-        fragmentoAdaptador = new FragmentoAdaptador(fm,getLifecycle());
+        fragmentoAdaptador = new FragmentoAdaptador(fm, getLifecycle());
 
         viewPager2.setAdapter(fragmentoAdaptador);
 
@@ -65,8 +64,7 @@ public class FavoritoFragment extends Fragment {
                 tabLayout.selectTab(tabLayout.getTabAt(position));
             }
         });
+
         return root;
     }
-
-
 }
