@@ -20,7 +20,7 @@ import java.util.List;
 public class ListaAdaptador extends RecyclerView.Adapter<ListaAdaptador.ViewHolder> implements View.OnClickListener {
 
     private View.OnClickListener listener;
-    private final List<ListaElementos> mData;
+    private List<ListaElementos> mData;
     private final LayoutInflater mInflater;
     private final Context context;
     private final String user;
@@ -30,6 +30,11 @@ public class ListaAdaptador extends RecyclerView.Adapter<ListaAdaptador.ViewHold
         this.context = context;
         this.mData = itemList;
         this.user = user;
+    }
+
+    public void setFiltradoProductos(List<ListaElementos> nuevoData) {
+        this.mData = nuevoData;
+        notifyDataSetChanged();
     }
 
     @Override

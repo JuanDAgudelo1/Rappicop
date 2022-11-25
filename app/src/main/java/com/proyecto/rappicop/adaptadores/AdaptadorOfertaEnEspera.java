@@ -67,6 +67,7 @@ public class AdaptadorOfertaEnEspera extends RecyclerView.Adapter<AdaptadorOfert
         ImageView Icono;
         TextView nombrerestaurante, horario;
         Button btnAceptarOfertaEnEspera;
+        Logica iu = new Logica(context);
 
         ViewHolder(View itemView) {
             super(itemView);
@@ -77,10 +78,9 @@ public class AdaptadorOfertaEnEspera extends RecyclerView.Adapter<AdaptadorOfert
         }
 
         void bindData(final OfertaAceptada item) {
-//            Icono.setImageBitmap(item.getImg());
+            Icono.setImageBitmap(item.getImagen());
             nombrerestaurante.setText(item.getOferta());
             horario.setText(item.getUbicacion());
-            Logica iu = new Logica(context);
 
             btnAceptarOfertaEnEspera.setOnClickListener(click -> {
                 boolean estadoModificado = iu.modificarEstadoOferta(item.getId(), "aceptada", usuario.getUsuario());

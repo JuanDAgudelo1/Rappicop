@@ -30,7 +30,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 + "nombre TEXT,categoria TEXT,precio INTEGER,ubicacion TEXT,descripcion TEXT,imagen BLOB)");
 
         db.execSQL("create table " + TABLE_CARRITO + "(id INTEGER PRIMARY KEY AUTOINCREMENT,vendedor TEXT,"
-                + "cliente TEXT,oferta TEXT,cantidad INTEGER)");
+                + "cliente TEXT,oferta TEXT,cantidad INTEGER,imagen BLOB)");
 
         db.execSQL("create table " + TABLE_UBICACIONES + "(id INTEGER PRIMARY KEY AUTOINCREMENT,usuario TEXT,"
                 + "nombre TEXT,direccion TEXT)");

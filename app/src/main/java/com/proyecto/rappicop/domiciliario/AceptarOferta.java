@@ -53,8 +53,8 @@ public class AceptarOferta extends AppCompatActivity {
         fijo.setText("Precio Uni: " + oferta.getPrecio());
         total.setText("Precio Total: " + (oferta.getPrecio() * Integer.parseInt(carritoModelo.getCantidad())));
 
-//        Bitmap bim = BitmapFactory.decodeByteArray(oferta.getImagen(), 0, oferta.getImagen().length);
-//        img.setImageBitmap(bim);
+        Bitmap bim = BitmapFactory.decodeByteArray(oferta.getImagen(), 0, oferta.getImagen().length);
+        img.setImageBitmap(bim);
 
         aceptar.setOnClickListener(view -> {
             Intent init = new Intent(AceptarOferta.this, MainActivity.class);

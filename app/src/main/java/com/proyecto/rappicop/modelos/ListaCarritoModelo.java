@@ -2,11 +2,13 @@ package com.proyecto.rappicop.modelos;
 
 import android.graphics.Bitmap;
 
+import java.io.ByteArrayOutputStream;
 import java.io.Serializable;
 
 public class ListaCarritoModelo implements Serializable {
 
     private Bitmap img;
+    private byte[] imagen;
     public String nproducto;
     public String precio;
     public String descripcion;
@@ -22,6 +24,10 @@ public class ListaCarritoModelo implements Serializable {
         this.cantidad = cantidad;
         this.consumidor = consumidor;
         this.vendedor = vendedor;
+
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        img.compress(Bitmap.CompressFormat.PNG, 100, stream);
+        this.imagen = stream.toByteArray();
     }
 
     public String getnproducto() {

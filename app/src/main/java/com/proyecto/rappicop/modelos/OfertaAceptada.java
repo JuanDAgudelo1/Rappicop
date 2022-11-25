@@ -1,5 +1,7 @@
 package com.proyecto.rappicop.modelos;
 
+import android.graphics.Bitmap;
+
 public class OfertaAceptada {
 
     private int id;
@@ -10,6 +12,7 @@ public class OfertaAceptada {
     private int precio;
     private String domiciliario;
     private String estado;
+    private Bitmap imagen;
 
     public int getId() {
         return id;
@@ -73,5 +76,13 @@ public class OfertaAceptada {
 
     public void setEstado(String estado) {
         this.estado = estado;
+    }
+
+    public Bitmap getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(Bitmap imagen) {
+        this.imagen = imagen;
     }
 }

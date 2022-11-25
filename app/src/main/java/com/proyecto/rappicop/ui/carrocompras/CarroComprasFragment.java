@@ -1,6 +1,8 @@
 package com.proyecto.rappicop.ui.carrocompras;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -63,8 +65,8 @@ public class CarroComprasFragment extends Fragment {
 
         for (CarritoModelo x : listacarrito) {
             Oferta oferta = iu.consultaOfertaPorNombre(x.getProducto());
-//            Bitmap bim = BitmapFactory.decodeByteArray(oferta.getImagen(), 0, oferta.getImagen().length);
-            elements.add(new ListaCarritoModelo(null, oferta.getNombre(), "$" + oferta.getPrecio(), oferta.getDescripcion(), "" + x.getCantidad(), x.getConsumidor(), x.getVendedor()));
+            Bitmap bim = oferta.getImagen() == null ? null : BitmapFactory.decodeByteArray(oferta.getImagen(), 0, oferta.getImagen().length);
+            elements.add(new ListaCarritoModelo(bim, oferta.getNombre(), "$" + oferta.getPrecio(), oferta.getDescripcion(), "" + x.getCantidad(), x.getConsumidor(), x.getVendedor()));
         }
 
         AdaptadorProducto adaptadorProducto = new AdaptadorProducto(elements, getActivity(), usuario);

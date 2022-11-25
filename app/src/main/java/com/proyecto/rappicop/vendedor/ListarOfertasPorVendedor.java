@@ -1,6 +1,8 @@
 package com.proyecto.rappicop.vendedor;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -11,8 +13,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.proyecto.rappicop.DB.Logica;
 import com.proyecto.rappicop.R;
 import com.proyecto.rappicop.modelos.ListaElementos;
-import com.proyecto.rappicop.modelos.Usuario;
 import com.proyecto.rappicop.modelos.Oferta;
+import com.proyecto.rappicop.modelos.Usuario;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,10 +49,8 @@ public class ListarOfertasPorVendedor extends AppCompatActivity {
 
         for (Oferta x : listaofertas) {
             String palo = "" + x.getPrecio();
-            // TODO: ajustar imagen
-//            Bitmap bim = BitmapFactory.decodeByteArray(x.getImagen(), 0, x.getImagen().length);
-
-            elements.add(new ListaElementos(null, x.getNombre(), x.getUbicacion(), palo, x.getUsuario()));
+            Bitmap bim = x.getImagen() == null ? null : BitmapFactory.decodeByteArray(x.getImagen(), 0, x.getImagen().length);
+            elements.add(new ListaElementos(bim, x.getNombre(), x.getUbicacion(), palo, x.getUsuario()));
         }
 
         OfertaAdaptador adaptadorLista = new OfertaAdaptador(elements, this, true);

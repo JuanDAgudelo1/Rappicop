@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -25,13 +26,17 @@ import java.io.InputStream;
 public class OfertarAlimento extends AppCompatActivity {
 
     private ImageView image;
+    private Bitmap bitmap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ofertarcomida);
 
+        image = findViewById(R.id.imagenSeleccionada);
+
         Button enviar = findViewById(R.id.btnEnviarOferta);
+        Button btnSubirImagen = findViewById(R.id.btnSubirImagen);
         EditText name = findViewById(R.id.name);
         Spinner categoria = findViewById(R.id.spinner);
         EditText precio = findViewById(R.id.precio);
@@ -42,22 +47,22 @@ public class OfertarAlimento extends AppCompatActivity {
         Usuario user = (Usuario) intent.getSerializableExtra("user");
         String usuario = user.getUsuario();
 
-//        subir.setOnClickListener(view -> {
-//            Intent intent1 = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-//            intent1.setType("image/");
-//            startActivityForResult(intent1.createChooser(intent1, "Seleccione la imagen"), 10);
-//        });
-//
+        btnSubirImagen.setOnClickListener(view -> {
+            Intent intent1 = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+            intent1.setType("image/");
+            startActivityForResult(intent1.createChooser(intent1, "Seleccione la imagen"), 10);
+        });
+
         enviar.setOnClickListener(view -> {
             String namext = name.getText().toString();
             String catgtxt = String.valueOf(categoria.getSelectedItem());
             int precionum = Integer.parseInt(precio.getText().toString());
             String ubitxt = ubicacion.getText().toString();
             String destxt = descripcion.getText().toString();
-//            byte[] imagebyte = imageViewByte(image);
+            byte[] imagebyte = imageViewByte(image);
 
             Logica crearoferta = new Logica(OfertarAlimento.this);
-            long id = crearoferta.nuevaOferta(usuario, namext, catgtxt, precionum, ubitxt, destxt, null);
+            long id = crearoferta.nuevaOferta(usuario, namext, catgtxt, precionum, ubitxt, destxt, imagebyte);
 
             if (id > 0) {
                 Toast.makeText(OfertarAlimento.this, "Oferta creada", Toast.LENGTH_LONG).show();
@@ -85,17 +90,11 @@ public class OfertarAlimento extends AppCompatActivity {
             Uri path = data.getData();
             try {
                 InputStream inputStream = getContentResolver().openInputStream(path);
-                Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+                bitmap = BitmapFactory.decodeStream(inputStream);
                 image.setImageBitmap(bitmap);
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
         }
     }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-    }
-
 }

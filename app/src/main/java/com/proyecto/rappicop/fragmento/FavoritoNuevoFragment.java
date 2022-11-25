@@ -1,5 +1,7 @@
 package com.proyecto.rappicop.fragmento;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -62,7 +64,8 @@ public class FavoritoNuevoFragment extends Fragment {
 
         for (Oferta x : listaofertas) {
             String palo = "" + x.getPrecio();
-            elements.add(new ListaElementos(null, x.getNombre(), x.getUbicacion(), palo, x.getUsuario()));
+            Bitmap bim = x.getImagen() == null ? null : BitmapFactory.decodeByteArray(x.getImagen(), 0, x.getImagen().length);
+            elements.add(new ListaElementos(bim, x.getNombre(), x.getUbicacion(), palo, x.getUsuario()));
         }
 
         adaptadorLista = new OfertaAdaptador(elements, getActivity(), false);

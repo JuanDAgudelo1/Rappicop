@@ -2,6 +2,7 @@ package com.proyecto.rappicop.adaptadores;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -79,9 +80,12 @@ public class AdaptadorProducto extends RecyclerView.Adapter<AdaptadorProducto.Vi
             Logica iu = new Logica(context);
 
             btnComprar.setOnClickListener(view -> {
+                item.setImg(null);
+
                 Intent i = new Intent(context, ListaDireccion.class);
                 i.putExtra("user", usuario);
                 i.putExtra("producto", item);
+
                 context.startActivity(i);
             });
 
@@ -90,6 +94,7 @@ public class AdaptadorProducto extends RecyclerView.Adapter<AdaptadorProducto.Vi
                     if (iu.aumentarCantidadCarrito(item.getConsumidor(), item.getVendedor(), item.getnproducto())) {
                         int sum = Integer.parseInt(cantidad.getText().toString()) + 1;
                         cantidad.setText(String.valueOf(sum));
+                        item.setCantidad(String.valueOf(sum));
                     } else {
                         Toast.makeText(context, "No aumenta", Toast.LENGTH_LONG).show();
                     }
@@ -109,6 +114,7 @@ public class AdaptadorProducto extends RecyclerView.Adapter<AdaptadorProducto.Vi
                         }
 
                         cantidad.setText(String.valueOf(men));
+                        item.setCantidad(String.valueOf(men));
                     } else {
                         Toast.makeText(context, "No disminuye", Toast.LENGTH_LONG).show();
                     }
