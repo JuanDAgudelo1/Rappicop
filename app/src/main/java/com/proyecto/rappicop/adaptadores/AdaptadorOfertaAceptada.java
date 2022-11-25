@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -59,11 +60,14 @@ public class AdaptadorOfertaAceptada extends RecyclerView.Adapter<AdaptadorOfert
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
+
         ImageView Icono;
-        TextView nombrerestaurante, horario, estadoOferta;
+        TextView nombrerestaurante, horario;
+        Button estadoOferta;
 
         ViewHolder(View itemView) {
             super(itemView);
+
             Icono = itemView.findViewById(R.id.Icono);
             nombrerestaurante = itemView.findViewById(R.id.nombrerestaurante);
             horario = itemView.findViewById(R.id.textohorario);

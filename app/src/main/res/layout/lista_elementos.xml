@@ -62,7 +62,7 @@
                     android:textSize="18sp" />
             </LinearLayout>
 
-            <TextView
+            <Button
                 android:id="@+id/estadoOferta"
                 android:layout_width="66dp"
                 android:layout_height="30dp"
@@ -74,9 +74,9 @@
                 android:background="@drawable/boton_diseno"
                 android:backgroundTint="#FFB562"
                 android:gravity="center"
-                android:text=""
+                android:text="Agregar"
                 android:textAlignment="center"
-                android:textSize="12dp"
+                android:textSize="6dp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

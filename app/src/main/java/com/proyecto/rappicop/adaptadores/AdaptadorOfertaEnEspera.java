@@ -83,7 +83,7 @@ public class AdaptadorOfertaEnEspera extends RecyclerView.Adapter<AdaptadorOfert
             Logica iu = new Logica(context);
 
             btnAceptarOfertaEnEspera.setOnClickListener(click -> {
-                boolean estadoModificado = iu.modificarEstadoOfertaAceptada(item.getId(), "aceptada", usuario.getUsuario());
+                boolean estadoModificado = iu.modificarEstadoOferta(item.getId(), "aceptada", usuario.getUsuario());
                 Toast.makeText(context, estadoModificado ? "Oferta aceptada" : "Oferta no aceptada", Toast.LENGTH_SHORT).show();
 
                 if (estadoModificado) {

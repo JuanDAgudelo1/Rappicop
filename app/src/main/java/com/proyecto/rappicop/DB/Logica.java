@@ -11,6 +11,7 @@ import com.proyecto.rappicop.modelos.CarritoModelo;
 import com.proyecto.rappicop.modelos.Direccion;
 import com.proyecto.rappicop.modelos.Oferta;
 import com.proyecto.rappicop.modelos.OfertaAceptada;
+import com.proyecto.rappicop.modelos.Usuario;
 
 import java.util.ArrayList;
 
@@ -47,6 +48,26 @@ public class Logica extends DatabaseHelper {
         }
 
         return id;
+    }
+
+    public Usuario consultarUsuario(String user) {
+        Usuario usuario = null;
+
+        try {
+            DatabaseHelper rapidb = new DatabaseHelper(context);
+            SQLiteDatabase db = rapidb.getWritableDatabase();
+
+            Cursor cursor = db.rawQuery("SELECT * FROM " + getTableName() + " WHERE usuario = '" + user + "'", null);
+
+            if (cursor.moveToFirst()) {
+                usuario = new Usuario(cursor.getString(0), cursor.getString(2), cursor.getString(3), cursor.getString(4));
+            }
+
+            cursor.close();
+        } catch (Exception e) {
+        }
+
+        return usuario;
     }
 
     /**
@@ -115,7 +136,7 @@ public class Logica extends DatabaseHelper {
         return id;
     }
 
-    public boolean modificarEstadoOfertaAceptada(int id, String nuevoEstado, String domicilario) {
+    public boolean modificarEstadoOferta(int id, String nuevoEstado, String domicilario) {
         boolean correct = false;
 
         DatabaseHelper rapidb = new DatabaseHelper(context);
@@ -489,7 +510,7 @@ public class Logica extends DatabaseHelper {
 
         ArrayList<OfertaAceptada> listaofertas = new ArrayList<>();
 
-        Cursor cursoroferta = db.rawQuery("SELECT * FROM " + rapidb.getTableAceptado() + " WHERE domiciliario = '" + domiciliario + "'", null);
+        Cursor cursoroferta = db.rawQuery("SELECT * FROM " + rapidb.getTableAceptado() + " WHERE domiciliario = '" + domiciliario + "' AND (estado <> 'espera' AND estado <> 'completada') ORDER BY id DESC", null);
 
         if (cursoroferta.moveToFirst()) {
             do {
